@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br"></html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Perfil</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" type="text/css" href="/css/trabalhos.css">
+</head>
+
+<body style="display: flex; flex-direction: column; background: #AFAFAF;">
+    <div th:insert="~{MenuEsq.html}"></div>
+
+    <div style="margin-left: 20%;">
+
+        <div class="header_trab">
+            <div>
+                <h2 class="h2_trabalhos"><span th:text="${idUsuario}"></span>Novo Trabalho </h2>
+            </div>
+        </div>
+
+        <div class="container_form">
+
+            <div class="new_job_form">
+                <div class="div_novo_trabalho"> Novo Trabalho </div>
+
+                <form class="formulario" method="post">
+                    <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
+                    <div class="form-group">
+                        <label for="titulo_trabalho">Titulo</label>
+                        <input class="input_field" type="text" id="titulo_trabalho" name="tituloTrabalho" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao_trabalho">Descricao</label>
+                        <input class="input_field" type="text" id="descricao_trabalho" name="descricaoTrabalho" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data_ini_trabalho">Data de inicio</label>
+                        <input class="input_field" type="date" id="data_ini_trabalho" name="data_iniTrabalho" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prazo_entrega_trabalho">Prazo de Entrega</label>
+                        <input class="input_field" type="date" id="prazo_entrega_trabalho"
+                            name="prazo_entregaTrabalho">
+                    </div>
+                    <div class="butao" style="margin: 5px;">
+                        <button class="butao" type="submit" value="Criar">Criar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

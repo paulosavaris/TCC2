@@ -1,0 +1,89 @@
+/* Estilos para o container do perfil */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    background-color: #a194f4;
+    padding-right: 10px;
+    padding-top: 5px;
+    margin-left: 20%;
+    padding-bottom: 10px;
+}
+
+.quadro-direita,
+.quadro-esquerda{
+    height: fit-content;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.quadro-esquerda{
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    margin-left: 5px;
+    grid-column: 1 / 3;
+    /*grid-template-columns: repeat(5, 73px);
+    grid-template-rows: repeat(14, 20px);*/
+    /*flex-flow: column;*/
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 10px 0px;
+}
+
+.quadro-direita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3 / 6;
+}
+
+
+.circulo {
+    /*margin-top: 10px;*/
+    background: lightblue;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    justify-self: center;
+    border: 1px solid #000000;
+}
+
+.user-Name{
+    font-family: Arial;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.user-job{
+    font-family: Arial;
+    font-size: 15px;
+    text-transform: capitalize;
+    align-self: flex-start;
+    margin: 0px 50px;
+    border-block: 2px solid #000000;
+}
+
+.user-task{
+    font-family: Arial;
+    font-size: 15px;
+    text-transform: capitalize;
+    align-self: flex-start;
+    margin: 0px 50px;
+    padding-right: 17px;
+    border-block-end: 2px solid #000000;
+}
+
+.p{
+    display: flex;
+    margin-block-start: 6px;
+    margin-block-end: 6px;
+    /* margin-inline-start: 20px; */
+    margin-inline-end: 211px;
+}
+
+.h3_teste{
+    margin-block-start: 5px;
+}

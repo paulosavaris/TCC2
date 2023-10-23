@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/menuEsq.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Esconder todos os conteúdos do acordeão inicialmente
+            $(".accordion__content").hide();
+
+            // Manipular o clique no cabeçalho do acordeão
+            $(".accordion__header").click(function () {
+                // Encontre o conteúdo associado a este cabeçalho
+                var content = $(this).next(".accordion__content");
+
+                // Toggle (mostrar/ocultar) o conteúdo
+                content.slideToggle();
+
+                // Alternar a classe 'active' no cabeçalho para girar o triângulo
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</head>
+<header>
+    <h1>TCC Ágil</h1>
+</header>
+
+<body>
+    <nav class="sidebar">
+        <h2 class="menu">Menu</h2>
+
+        <div class="sidebar__options">
+            <div>
+                <a href="#">Dashboard</a>
+            </div>
+
+
+            <div class="accordion">
+                <a href="/dash_trabalhos" id="linkTrabalhos">Trabalhos</a>
+                <div class="accordion__header"></div>
+                <!-- Conteúdo do acordeão "Trabalhos"  -->
+                <div class="accordion__content">
+                    <a href="#">teste</a>
+                    <a href="#">teste2</a>
+                </div>
+            </div>
+
+            <div>
+                <a href="#">Tarefas</a>
+            </div>
+        </div>
+        <!-- Teste -->
+    </nav>
+</body>
