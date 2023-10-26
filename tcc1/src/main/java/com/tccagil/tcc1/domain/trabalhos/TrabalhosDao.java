@@ -80,7 +80,5 @@ public class TrabalhosDao {
         return "New_Job_dados [id_trab=" + idTrab + ", titulo=" + titulo + ", descricao=" + descricao + ", data_ini="
                 + dataDeInicio + ", data_prazo=" + prazoDeEntrega + "]";
     }
-    
-
-    
+        
 }

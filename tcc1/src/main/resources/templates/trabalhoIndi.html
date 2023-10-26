@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br"></html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Lista de Trabalhos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+    <h1>Trabalhos Disponíveis</h1>
+    <ul>
+        <li th:each="trabalho : ${nomesTrabalhos}">
+            <a th:href="@{'/trabalhos/' + ${trabalho}}">Trabalho <span th:text="${trabalho}"></span></a>
+        </li>
+    </ul>
+</body>
+</html>

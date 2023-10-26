@@ -9,6 +9,9 @@ import com.tccagil.tcc1.domain.trabalhos.TrabalhosDto;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosRecord;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +42,10 @@ public class TrabalhosController {
             //String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome
                                                           // do usuário
             //model.addAttribute("nomeUsuario", nomeUsuario);
+            List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
+            model.addAttribute("nomesTrabalhos", nomesTrabalhos);
             model.addAttribute("idUsuario", idUsuario);
+
 
             return "trabalhos";
         } else {
