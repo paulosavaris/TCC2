@@ -27,6 +27,7 @@ public class loginController {
         @Autowired
     private UsuarioRepository repository;
     
+    
     @GetMapping
     public String carregaPagLogin() {
         return "login";

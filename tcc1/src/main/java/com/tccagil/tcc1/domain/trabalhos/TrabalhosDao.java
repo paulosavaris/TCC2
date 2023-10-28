@@ -23,7 +23,7 @@ import java.time.LocalDate;
 public class TrabalhosDao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) /* estratégia de geração de chave identity */
-     @Column(name = "idTrab")
+     @Column(name = "idtrab")
     private int idTrab;
 
     public int getidTrab() {

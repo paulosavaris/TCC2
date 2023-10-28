@@ -4,6 +4,7 @@
  */
 package com.tccagil.tcc1.controller;
 
+import com.tccagil.tcc1.Service.AutenticacaoService;
 import com.tccagil.tcc1.domain.login.UsuarioDao;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
 
@@ -25,28 +26,16 @@ public class DahsTrabalhos {
 
     @Autowired
     private TrabalhosRepository trabalhosRepository;
+    
+        @Autowired
+    private AutenticacaoService autenticacaoService;
 
     @GetMapping("/dash_trabalhos")
-    public String perfil(HttpSession session, Model model) {
-        // Verifica se o usuário está logado
-        if (session.getAttribute("usuarioLogado") != null) {
-            // Recupera o objeto Login_Cadastro da sessão
-            UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
-
-            // Obtém o nome do usuário e coloca no modelo para ser exibido na página
-            String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome
-                                                          // do usuário
-            model.addAttribute("nomeUsuario", nomeUsuario);
-
-            int idUsuario = (int) session.getAttribute("idUsuarioLogado");
-            List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-            model.addAttribute("nomesTrabalhos", nomesTrabalhos);
-
-            // Redireciona para a página de perfil
+    public String perfil(HttpSession session, Model model)  {
+        if (autenticacaoService.isUsuarioLogado(session)) {
+            autenticacaoService.adicionarInformacoesComuns(model, session);
             return "dash_trabalhos";
         } else {
-            // Caso o usuário não esteja logado, você pode redirecionar para a página de
-            // login ou fazer outra ação
             return "redirect:/login";
         }
     }
