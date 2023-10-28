@@ -5,12 +5,10 @@
 package com.tccagil.tcc1.controller;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
-import com.tccagil.tcc1.domain.login.UsuarioDao;
-import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
+
 
 import jakarta.servlet.http.HttpSession;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DahsTrabalhos {
 
-    @Autowired
-    private TrabalhosRepository trabalhosRepository;
-    
+
         @Autowired
     private AutenticacaoService autenticacaoService;
 
