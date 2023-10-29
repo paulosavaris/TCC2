@@ -16,7 +16,9 @@ import org.springframework.data.repository.query.Param;
  */
 public interface TrabalhosRepository extends JpaRepository<TrabalhosDao, Long>{
     
-    @Query("SELECT t.titulo FROM TrabalhosDao t WHERE t.idUsuarioResponsavel  = :idUsuario")
-    List<String> obterNomesTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
+    // @Query("SELECT t.titulo FROM TrabalhosDao t WHERE t.idUsuarioResponsavel  = :idUsuario")
+    // List<String> obterNomesTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
+    @Query("SELECT t FROM TrabalhosDao t WHERE t.idUsuarioResponsavel = :idUsuario")
+    List<TrabalhosDao> obterTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
 
 }

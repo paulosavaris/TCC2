@@ -37,8 +37,8 @@ public class TrabIndiController {
             model.addAttribute("idUsuario", idUsuario);
             model.addAttribute("nomeUsuario", nomeUsuario);
             
-            List<String> nomesTrabalhos = trabalhoIndiRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-            model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+            // List<String> nomesTrabalhos = trabalhoIndiRepository.obterNomesTrabalhosPorUsuario(idUsuario);
+            // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
 
             TrabalhosDao trabalho = trabalhosIndService.obterTrabalhoPorId(idtrab);
             model.addAttribute("trabalho", trabalho);

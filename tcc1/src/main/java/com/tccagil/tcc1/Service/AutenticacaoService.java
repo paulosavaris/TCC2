@@ -1,11 +1,14 @@
 package com.tccagil.tcc1.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tccagil.tcc1.domain.login.UsuarioDao;
+import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
+import com.tccagil.tcc1.domain.trabalhos.TrabalhosInfo;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -22,14 +25,23 @@ public class AutenticacaoService {
     }
 
         public void adicionarInformacoesComuns(Model model, HttpSession session) {
-        UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
-        String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome do usuário
-        model.addAttribute("nomeUsuario", nomeUsuario);
+
+            UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
+            String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome do usuário
+            model.addAttribute("nomeUsuario", nomeUsuario);
         
-        int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+            int idUsuario = (int) session.getAttribute("idUsuarioLogado");
 
 
-        List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-        model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+            // List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
+            // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+                    List<TrabalhosInfo> trabalhos = new ArrayList<>();
+        List<TrabalhosDao> trabalhosDoUsuario = trabalhosRepository.obterTrabalhosPorUsuario(idUsuario);
+        for (TrabalhosDao trabalho : trabalhosDoUsuario) {
+            TrabalhosInfo trabalhoInfo = new TrabalhosInfo(trabalho.getidTrab(), trabalho.getTitulo());
+            trabalhos.add(trabalhoInfo);
+        }
+
+        model.addAttribute("trabalhos", trabalhos);
     }
 }
