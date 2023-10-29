@@ -1,6 +1,5 @@
 package com.tccagil.tcc1.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.tccagil.tcc1.domain.login.UsuarioDao;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
-import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class TrabIndiController {
-
-   @Autowired
-    private TrabalhosRepository trabalhoIndiRepository; 
 
     @Autowired
     private TrabalhosService trabalhosIndService;
