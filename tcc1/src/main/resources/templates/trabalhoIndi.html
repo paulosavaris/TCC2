@@ -10,15 +10,8 @@
 </head>
 
 <body>
-    <h1>Trabalhos Disponíveis</h1>
-    <ul>
-            <li th:each="trabalho : ${trabalhos}">
-                <a th:href="@{'/trabalho/' + ${trabalho.id}}">Trabalho <span th:text="${trabalho.titulo}"></span></a>
-            </li>
-            <!-- <a th:href="@{'/trabalhos/' + ${trabalho}}">Trabalho <span th:text="${trabalho}"></span></a> -->
-    </ul>
         <h1>Detalhes do Trabalho</h1>
-    <h2 th:text="${trabalho.titulo}"></h2>
-    <p th:text="${trabalho.descricao}"></p>
+    <h2 th:text="${trabalhoIndi.titulo}"></h2>
+    <p th:text="${trabalhoIndi.descricao}"></p>
 </body>
 </html>

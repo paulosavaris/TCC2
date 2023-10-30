@@ -17,25 +17,26 @@ import org.springframework.ui.Model;
 @Service
 public class AutenticacaoService {
 
-        @Autowired
+    @Autowired
     private TrabalhosRepository trabalhosRepository;
 
     public boolean isUsuarioLogado(HttpSession session) {
         return session.getAttribute("usuarioLogado") != null;
     }
 
-        public void adicionarInformacoesComuns(Model model, HttpSession session) {
+    public void adicionarInformacoesComuns(Model model, HttpSession session) {
 
-            UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
-            String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome do usuário
-            model.addAttribute("nomeUsuario", nomeUsuario);
-        
-            int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+        UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
+        String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome do
+                                                      // usuário
+        model.addAttribute("nomeUsuario", nomeUsuario);
 
+        int idUsuario = (int) session.getAttribute("idUsuarioLogado");
 
-            // List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-            // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
-                    List<TrabalhosInfo> trabalhos = new ArrayList<>();
+        // List<String> nomesTrabalhos =
+        // trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
+        // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+        List<TrabalhosInfo> trabalhos = new ArrayList<>();
         List<TrabalhosDao> trabalhosDoUsuario = trabalhosRepository.obterTrabalhosPorUsuario(idUsuario);
         for (TrabalhosDao trabalho : trabalhosDoUsuario) {
             TrabalhosInfo trabalhoInfo = new TrabalhosInfo(trabalho.getidTrab(), trabalho.getTitulo());
