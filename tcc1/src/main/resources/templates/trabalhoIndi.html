@@ -9,12 +9,39 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv="content-language" content="pt-br" />
     <meta name="robots" content="index, follow" />
+
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-0lax{text-align:left;vertical-align:top}
+        </style>
 </head>
 
 <body>
-    <h1>Detalhes do Trabalho</h1>
     <h2 th:text="${trabalhoIndi.titulo}"></h2>
     <p th:text="${trabalhoIndi.descricao}"></p>
+    <a href="/tarefasCad">Tarefas Cadastro</a>
+    <h2>Tarefas</h2>
+    <table id="tabela-tarefas" class="tg">
+        <thead>
+            <tr>
+                <th class="tg-0lax">Tarefas</th>
+                <th class="tg-0lax">Status</th>
+                <th class="tg-0lax">Prioridade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-0lax">Tarefa 1</td>
+                <td class="tg-0lax">A fazer</td>
+                <td class="tg-0lax">Alta</td>
+            </tr>
+            <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+    </table>
 </body>
 
 </html>

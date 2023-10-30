@@ -27,8 +27,7 @@ public class AutenticacaoService {
     public void adicionarInformacoesComuns(Model model, HttpSession session) {
 
         UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
-        String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome do
-                                                      // usuário
+        String nomeUsuario = usuarioLogado.getNome(); 
         model.addAttribute("nomeUsuario", nomeUsuario);
 
         int idUsuario = (int) session.getAttribute("idUsuarioLogado");
