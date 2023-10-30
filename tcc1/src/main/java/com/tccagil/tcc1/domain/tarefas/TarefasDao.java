@@ -56,6 +56,8 @@ public class TarefasDao {
         return trabalhoid;
     }
 
+    public TarefasDao(){}
+
     public TarefasDao(TarefasRecord dados) {
         this.titulo = dados.tituloTarefas();
         this.descricao = dados.descricaoTarefas();

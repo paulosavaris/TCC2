@@ -34,10 +34,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="tg-0lax">Tarefa 1</td>
-                <td class="tg-0lax">A fazer</td>
-                <td class="tg-0lax">Alta</td>
+            <tr th:each="tarefa : ${tarefas}">
+                <td class="tg-0lax" th:text="${tarefa.titulo}"></td>
+                <td class="tg-0lax" th:text="${tarefa.status}"></td>
+                <td class="tg-0lax" th:text="${tarefa.prioridade}"></td>
             </tr>
             <!-- Adicione mais linhas conforme necessário -->
         </tbody>
