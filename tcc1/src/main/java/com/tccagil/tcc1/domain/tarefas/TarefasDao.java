@@ -28,8 +28,8 @@ public class TarefasDao {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "trabalhoId")
-    private int trabalhoid;
+    @Column(name = "trabalhoid")
+    private Long trabalhoid;
 
     
     public int getIdTarefas() {
@@ -52,7 +52,7 @@ public class TarefasDao {
         return status;
     }
 
-    public int getTrabalhoid() {
+    public long getTrabalhoid() {
         return trabalhoid;
     }
 

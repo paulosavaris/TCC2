@@ -21,18 +21,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <form method="post">
                 <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
                 <div class="form-group">
-                    <label for="TarefaNome">Tarefa</label>
-                    <input type="text" id="TarefaNome" name="TarefaNome" required>
+                    <label for="tituloTarefas">Tarefa</label>
+                    <input type="text" id="tituloTarefas" name="tituloTarefas" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="TarefaDescricao">Descricao</label>
-                    <input type="text" id="TarefaDescricao" name="TarefaDescricao" required>
+                    <label for="descricaoTarefas">Descricao</label>
+                    <input type="text" id="descricaoTarefas" name="descricaoTarefas" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="TarefaPrioridade">Prioridade:</label>
-                    <select id="TarefaPrioridade" name="TarefaPrioridade">
+                    <label for="prioridadeTarefas">Prioridade:</label>
+                    <select id="prioridadeTarefas" name="prioridadeTarefas">
                         <option value="baixa">Baixa</option>
                         <option value="media">Média</option>
                         <option value="alta">Alta</option>
@@ -41,8 +41,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
 
                 <div class="form-group">
-                    <label for="TarefaAtividades">Atividades</label>
-                    <input type="text" id="TarefaAtividades" name="TarefaAtividades" required>
+                    <label for="statusTarefas">Status</label>
+                    <select type="text" id="statusTarefas" name="statusTarefas" required>
+                        <option value="Afazer">A fazer</option>
+                        <option value="Fazendo">Fazendo </option>
+                        <option value="AguardandoRetorno">Aguardando Retorno</option>
+                        <option value="Concluida">Concluida</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

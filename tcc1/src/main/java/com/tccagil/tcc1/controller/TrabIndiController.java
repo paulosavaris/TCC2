@@ -34,6 +34,7 @@ public class TrabIndiController {
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
             model.addAttribute("trabalhoIndi", trabalhoIndi);
+            model.addAttribute("idtrab", idtrab);
         // Verifica se o trabalho existe e se o usuário logado é o proprietário do trabalho
         if (trabalhoIndi != null && trabalhoIndi.getIdUsuario() == idUsuario) {
             model.addAttribute("trabalhoIndi", trabalhoIndi);
