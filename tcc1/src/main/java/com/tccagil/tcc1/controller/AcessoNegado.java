@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.tccagil.tcc1.Service.AutenticacaoService;
 
 import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class AcessoNegado {
-        @Autowired
+    @Autowired
     private AutenticacaoService autenticacaoService;
 
     @GetMapping("/Acesso_negado")

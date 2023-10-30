@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
-import com.tccagil.tcc1.domain.login.UsuarioDao;
+
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosService;
 
