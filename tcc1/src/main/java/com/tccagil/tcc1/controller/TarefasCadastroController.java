@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
-import com.tccagil.tcc1.domain.login.UsuarioDao;
 import com.tccagil.tcc1.domain.tarefas.TarefasDao;
 import com.tccagil.tcc1.domain.tarefas.TarefasRecord;
 import com.tccagil.tcc1.domain.tarefas.TarefasRepository;

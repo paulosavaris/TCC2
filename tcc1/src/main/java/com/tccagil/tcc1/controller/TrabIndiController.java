@@ -46,7 +46,6 @@ public class TrabIndiController {
                 model.addAttribute("trabalhoIndi", trabalhoIndi);
 
                 List<TarefasDao> tarefas = tarefasRepository.obterTarefasPorTrabalho(idtrab);
-
                 // Adicione as tarefas ao modelo
                 model.addAttribute("tarefas", tarefas);
                 // Redireciona para a página de perfil

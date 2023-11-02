@@ -35,7 +35,13 @@
         </thead>
         <tbody>
             <tr th:each="tarefa : ${tarefas}">
-                <td class="tg-0lax" th:text="${tarefa.titulo}"></td>
+                <!-- <td class="tg-0lax" th:text="${tarefa.titulo}"></td> -->
+                <td class="tg-0lax">
+                    <a th:href="@{'/tarefasEdit/' + ${tarefa.idTarefas}}">
+                        <span th:text="${tarefa.titulo}"></span>
+                    </a>
+                </td>
+                
                 <td class="tg-0lax" th:text="${tarefa.status}"></td>
                 <td class="tg-0lax" th:text="${tarefa.prioridade}"></td>
             </tr>
