@@ -20,7 +20,7 @@ public class AtividadeDao {
     private int usuarioId;
 
     @Column(name = "tarefaid")
-    private int tarefaId;
+    private long tarefaId;
 
     @Column(name = "descricao")
     private String descricao;
@@ -33,7 +33,7 @@ public class AtividadeDao {
         return usuarioId;
     }
 
-    public int getTarefaId() {
+    public long getTarefaId() {
         return tarefaId;
     }
 

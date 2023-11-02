@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h2>Tarefa X</h2>
             <form th:action="@{'/tarefasEdit/' + ${idtarefas}}" method="post">
                 <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="TarefaNomeEdit">Tarefa</label>
                     <input type="text" id="TarefaNomeEdit" name="TarefaNomeEdit" required th:value="${tarefa.titulo}">
                 </div>
@@ -48,7 +48,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <option value="Aguardando Retorno" th:selected="${tarefa.status == 'Aguardando Retorno'}">Aguardando Retorno</option>
                         <option value="Concluida" th:selected="${tarefa.status == 'Concluida'}">Concluida</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="descricaoAtividade">Atividades</label>
