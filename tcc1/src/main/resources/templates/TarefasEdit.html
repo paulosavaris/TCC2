@@ -18,25 +18,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <div class="container">
         <div class="cadastro-form">
             <h2>Tarefa X</h2>
-            <form method="post">
+            <form th:action="@{'/tarefasEdit/' + ${idtarefas}}" method="post">
                 <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
                 <div class="form-group">
                     <label for="TarefaNome">Tarefa</label>
-                    <input type="text" id="TarefaNome" name="TarefaNome" required>
+                    <input type="text" id="TarefaNome" name="TarefaNome" required th:value="${tarefa.titulo}">
                 </div>
 
                 <div class="form-group">
                     <label for="TarefaDescricao">Descricao</label>
-                    <input type="text" id="TarefaDescricao" name="TarefaDescricao" required>
+                    <input type="text" id="TarefaDescricao" name="TarefaDescricao" required th:value="${tarefa.descricao}">
                 </div>
 
                 <div class="form-group">
                     <label for="TarefaPrioridade">Prioridade:</label>
                     <select id="TarefaPrioridade" name="TarefaPrioridade">
-                        <option value="baixa">Baixa</option>
-                        <option value="media">Média</option>
-                        <option value="alta">Alta</option>
-                        <option value="urgente">Urgente</option>
+                        <option value="baixa" th:selected="${tarefa.prioridade == 'baixa'}">Baixa</option>
+                        <option value="media" th:selected="${tarefa.prioridade == 'media'}">Média</option>
+                        <option value="alta" th:selected="${tarefa.prioridade == 'alta'}">Alta</option>
+                        <option value="urgente" th:selected="${tarefa.prioridade == 'urgente'}">Urgente</option>
                     </select>
                 </div>
 
