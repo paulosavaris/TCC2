@@ -1,5 +1,7 @@
 package com.tccagil.tcc1.domain.tarefas;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -64,6 +66,29 @@ public class TarefasDao {
         this.prioridade = dados.prioridadeTarefas();
         this.status = dados.statusTarefas();
         this.trabalhoid = dados.trabalhoIdTarefas();
+    }
+
+    public boolean isEqual(TarefasDTO form) {//para comparar se os campos da entidade são iguais aos campos do objeto TarefasDTO
+        return Objects.equals(this.titulo, form.getTarefaNomeEdit()) &&
+        Objects.equals(this.descricao, form.getTarefaDescricaoEdit()) &&
+        Objects.equals(this.prioridade, form.getTarefaPrioridadeEdit()) &&
+        Objects.equals(this.status, form.getStatusTarefasEdit());
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setPrioridade(String prioridade) {
+        this.prioridade = prioridade;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 
