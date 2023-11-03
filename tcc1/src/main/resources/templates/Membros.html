@@ -7,31 +7,102 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 <head>
     <meta charset='utf-8'>
-    <title>Teste</title>
+    <title>Adicionar Membros ao Trabalho</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv="content-language" content="pt-br" />
     <meta name="robots" content="index, follow" />
     <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="cadastro-form">
-            <h2>Membro</h2>
-            <form method="post">
-                <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
+            <h1>Adicionar Membros ao Trabalho</h1>
 
-                <div class="form-group">
-                    <label for="CadastroEmail">Email</label>
-                    <input type="email" id="CadastroEmail" name="CadastroEmail" required>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" value="Convidar">Convidar</button>
-                </div>
+            <!-- Formulário para adicionar membros -->
+            <form method="post" th:action="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
+                <label for="email">Email do Membro:</label>
+                <input type="text" id="email" name="email" />
+                <button type="submit">Adicionar Membro</button>
             </form>
+
+            <!-- Lista de membros já adicionados -->
+            <h2>Membros Adicionados:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Opcoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="result : ${membros}">
+                        <td th:text="${result[1].nome}"></td>
+                        <td th:text="${result[0]}"></td>
+                        <td><button type="button" class="remove-button" th:attr="data-member-id=${result[1].idMembros}, data-work-id=${idtrab}">Remover</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <a th:href="@{'/trabalhoIndi/' + ${idtrab}}">
+                <button type="button">Voltar para Trabalho</button>
+                </a>
+            </div>
         </div>
     </div>
 </body>
+
+<script>
+    $(function () {
+        $("#email").autocomplete({
+            source: function (request, response) {
+                // Faça uma solicitação AJAX para buscar e-mails correspondentes no banco de dados
+                $.ajax({
+                    url: "/buscarEmails",
+                    dataType: "json",
+                    data: {
+                        term: request.term // O valor digitado no campo de pesquisa
+                    },
+                    success: function (data) {
+                        response(data); // Fornece a lista de sugestões
+                    }
+                });
+            },
+            minLength: 2 // Número mínimo de caracteres antes de começar a pesquisa
+        });
+    });
+
+// Adicione um ouvinte de evento a todos os botões de remoção
+const removeButtons = document.querySelectorAll(".remove-button");
+removeButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        const memberId = this.getAttribute("data-member-id");
+        const workId = this.getAttribute("data-work-id");
+
+        // Envie uma solicitação para o servidor para remover o membro
+        fetch(`/trabalhoIndi/${workId}/Membros/removeMember/${memberId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => {
+            if (response.status === 200) {
+                alert("Membro Removido com sucesso.");
+                window.location.reload(); // Recarrega a página
+                // Atualize a lista de membros após a remoção
+                // Você pode recarregar a página ou remover o membro da lista com JavaScript
+            } else {
+                alert("Erro ao remover o membro.");
+            }
+        });
+    });
+});
+
+</script>
 
 </html>

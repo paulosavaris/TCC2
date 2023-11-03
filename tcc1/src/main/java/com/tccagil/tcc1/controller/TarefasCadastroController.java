@@ -15,6 +15,7 @@ import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosService;
 
 import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class TarefasCadastroController {
 
@@ -31,12 +32,13 @@ public class TarefasCadastroController {
     public String novaTarefa(@PathVariable Long idtrab, HttpSession session, Model model) {
         if (autenticacaoService.isUsuarioLogado(session)) {
             autenticacaoService.adicionarInformacoesComuns(model, session);
-                    int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+            int idUsuario = (int) session.getAttribute("idUsuarioLogado");
 
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
             model.addAttribute("idtrab", idtrab);
 
-            // Verifica se o trabalho existe e se o usuário logado é o proprietário do trabalho
+            // Verifica se o trabalho existe e se o usuário logado é o proprietário do
+            // trabalho
             if (trabalhoIndi != null && trabalhoIndi.getIdUsuario() == idUsuario) {
                 model.addAttribute("trabalhoIndi", trabalhoIndi);
                 return "tarefasCad"; // Página para criar uma nova tarefa
@@ -52,13 +54,12 @@ public class TarefasCadastroController {
     public String salvarNovaTarefa(@PathVariable Long idtrab, TarefasRecord dados) {
         // Lógica para salvar a nova tarefa no banco de dados
         TarefasRecord tarefas = new TarefasRecord(idtrab, dados.tituloTarefas(),
-        dados.descricaoTarefas(), dados.prioridadeTarefas(), dados.statusTarefas());
+                dados.descricaoTarefas(), dados.prioridadeTarefas(), dados.statusTarefas());
 
         var tarefasCad = new TarefasDao(tarefas);
         // userCadaTeste.add(userCadastro);
         tarefasRepository.save(tarefasCad);
 
-        
         // Redireciona de volta para a página de trabalho relacionada
         return "redirect:/trabalhoIndi/" + idtrab;
     }
