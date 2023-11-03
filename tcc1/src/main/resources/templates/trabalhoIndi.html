@@ -24,6 +24,11 @@
     <h2 th:text="${trabalhoIndi.titulo}"></h2>
     <p th:text="${trabalhoIndi.descricao}"></p>
     <a th:href="@{/trabalhoIndi/{idtrab}/tarefasCad(idtrab=${idtrab})}">Tarefas Cadastro</a>
+    <div style="margin-right: 14px;">
+        <a href="/trabalhos">
+            <button type="button" class="butao">Trabalhos</button>
+        </a>
+    </div>
     <h2>Tarefas</h2>
     <table id="tabela-tarefas" class="tg">
         <thead>

@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <body>
     <div class="container">
         <div class="cadastro-form">
-            <h2>Tarefa X</h2>
+            <h2 th:text="${tarefa.titulo}"></h2>
             <form th:action="@{'/tarefasEdit/' + ${idtarefas}}" method="post">
                 <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
                 <div class="form-group">
@@ -27,7 +27,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <div class="form-group">
                     <label for="TarefaDescricaoEdit">Descricao</label>
-                    <input type="text" id="TarefaDescricaoEdit" name="TarefaDescricaoEdit" required th:value="${tarefa.descricao}">
+                    <input type="text" id="TarefaDescricaoEdit" name="TarefaDescricaoEdit" required
+                        th:value="${tarefa.descricao}">
                 </div>
 
                 <div class="form-group">
@@ -45,7 +46,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <select type="text" id="statusTarefasEdit" name="statusTarefasEdit" required>
                         <option value="A fazer" th:selected="${tarefa.status == 'A fazer'}">A fazer</option>
                         <option value="Fazendo" th:selected="${tarefa.status == 'Fazendo'}">Fazendo </option>
-                        <option value="Aguardando Retorno" th:selected="${tarefa.status == 'Aguardando Retorno'}">Aguardando Retorno</option>
+                        <option value="Aguardando Retorno" th:selected="${tarefa.status == 'Aguardando Retorno'}">
+                            Aguardando Retorno</option>
                         <option value="Concluida" th:selected="${tarefa.status == 'Concluida'}">Concluida</option>
                     </select>
                 </div>
@@ -64,6 +66,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
 
             </form>
+            <div class="form-group">
+                <a th:href="@{'/trabalhoIndi/' + ${tarefa.trabalhoid}}">
+                <button type="button">Voltar para Trabalho</button>
+                </a>
+            </div>
         </div>
 
     </div>
