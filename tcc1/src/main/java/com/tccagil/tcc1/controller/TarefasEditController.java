@@ -1,5 +1,7 @@
 package com.tccagil.tcc1.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,10 @@ public class TarefasEditController {
             model.addAttribute("tarefa", tarefa);
 
             model.addAttribute("idtarefas", idtarefas);
+
+            List<Object[]> atividades = ativadeRepository.obterAtividadePorTarefa(idtarefas);
+            model.addAttribute("atividades", atividades);
+
             return "tarefasEdit";
         } else {
             return "redirect:/login";
@@ -79,26 +85,6 @@ public class TarefasEditController {
             return "redirect:/tarefasEdit/{idtarefas}";
         }
 
-    // @PostMapping("/tarefasEdit/{idtarefas}")
-    // public String atualizarTarefa(@PathVariable Long idtarefas, TarefasDTO form)
-    // {
-    // TarefasDao tarefa = tarefasRepository.findById(idtarefas).orElse(null);
 
-    // // Verifique se os campos foram alterados em relação aos valores atuais
-    // if (tarefa != null && !tarefa.isEqual(form)) { // Implemente o método
-    // isEqual() na classe TarefasDao
-    // // Atualize a entidade apenas se os campos forem diferentes
-    // tarefa.setTitulo(form.getTarefaNomeEdit());
-    // tarefa.setDescricao(form.getTarefaDescricaoEdit());
-    // tarefa.setPrioridade(form.getTarefaPrioridadeEdit());
-    // tarefa.setStatus(form.getStatusTarefasEdit());
-
-    // // Atualize a tarefa no banco de dados
-    // tarefasRepository.save(tarefa);
-    // }
-
-    // // Redirecione de volta para a página de edição da tarefa
-    // return "redirect:/tarefasEdit/{idtarefas}";
-    // }
 
 }

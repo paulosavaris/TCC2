@@ -54,12 +54,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <label for="descricaoAtividade">Atividades</label>
                     <input type="text" id="descricaoAtividade" name="descricaoAtividade">
                 </div>
-
+                <ul>
+                    <th:block th:each="result : ${atividades}">
+                        <li th:text="${result[0]} + ': ' + ${result[1].descricao}"></li>
+                    </th:block>
+                </ul>
                 <div class="form-group">
                     <button type="submit" value="Salvar">Salvar</button>
                 </div>
+
             </form>
         </div>
+
     </div>
 </body>
 
