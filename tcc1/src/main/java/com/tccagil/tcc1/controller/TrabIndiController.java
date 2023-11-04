@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
+import com.tccagil.tcc1.domain.membros.MembrosDao;
+import com.tccagil.tcc1.domain.membros.MembrosService;
 import com.tccagil.tcc1.domain.tarefas.TarefasDao;
 import com.tccagil.tcc1.domain.tarefas.TarefasRepository;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
@@ -28,6 +30,9 @@ public class TrabIndiController {
     @Autowired
     private TarefasRepository tarefasRepository;
 
+    @Autowired
+    private MembrosService membrosService;
+
     @GetMapping("/trabalhoIndi/{idtrab}")
     public String trabalhoIndi(@PathVariable Long idtrab, HttpSession session, Model model) {
         // Verifica se o usuário está logado
@@ -38,11 +43,14 @@ public class TrabIndiController {
             // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
+            MembrosDao membrosInd = membrosService.obterMembroIDporTrabalho(idtrab, idUsuario);
+
             model.addAttribute("trabalhoIndi", trabalhoIndi);
+            model.addAttribute("membrosInd", membrosInd);
             model.addAttribute("idtrab", idtrab);
             // Verifica se o trabalho existe e se o usuário logado é o proprietário do
             // trabalho
-            if (trabalhoIndi != null && trabalhoIndi.getIdUsuario() == idUsuario) {
+            if (trabalhoIndi != null && (trabalhoIndi.getIdUsuario() == idUsuario || (membrosInd != null && membrosInd.getUsuarioId() == idUsuario))) {
                 model.addAttribute("trabalhoIndi", trabalhoIndi);
 
                 List<TarefasDao> tarefas = tarefasRepository.obterTarefasPorTrabalho(idtrab);

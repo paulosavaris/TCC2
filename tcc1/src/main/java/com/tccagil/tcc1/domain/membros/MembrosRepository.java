@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.tccagil.tcc1.domain.tarefas.TarefasDao;
+
 
 
 
@@ -17,5 +19,11 @@ public interface MembrosRepository extends JpaRepository<MembrosDao, Long> {
 
     @Query("SELECT u.email as email, m FROM MembrosDao m JOIN UsuarioDao u ON m.usuarioid = u.idUsuario WHERE m.trabalhoid = :idtrab")
     List<Object[]> obterMembroPorTrabalho(@Param("idtrab") Long idtrab);
+
+    // @Query("SELECT md FROM MembrosDao md where ta.trabalhoid = :idtrab")
+    // List<TarefasDao> obterMembroIdPorTrabalho(@Param("idtrab") Long idtrab);
+
+	MembrosDao findByUsuarioidAndTrabalhoid(int usuarioid, Long trabalhoid);
+
 }
 
