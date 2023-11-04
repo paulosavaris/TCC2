@@ -32,9 +32,7 @@ public class AutenticacaoService {
 
         int idUsuario = (int) session.getAttribute("idUsuarioLogado");
 
-        // List<String> nomesTrabalhos =
-        // trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-        // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+        
         List<TrabalhosInfo> trabalhos = new ArrayList<>();
         List<TrabalhosDao> trabalhosDoUsuario = trabalhosRepository.obterTrabalhosPorUsuario(idUsuario);
         for (TrabalhosDao trabalho : trabalhosDoUsuario) {

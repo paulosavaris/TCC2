@@ -18,7 +18,9 @@ public interface TrabalhosRepository extends JpaRepository<TrabalhosDao, Long>{
     
     // @Query("SELECT t.titulo FROM TrabalhosDao t WHERE t.idUsuarioResponsavel  = :idUsuario")
     // List<String> obterNomesTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
-    @Query("SELECT t FROM TrabalhosDao t WHERE t.idUsuarioResponsavel = :idUsuario")
+    // @Query("SELECT t FROM TrabalhosDao t WHERE t.idUsuarioResponsavel = :idUsuario")
+    // List<TrabalhosDao> obterTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
+    @Query("SELECT t FROM TrabalhosDao t  LEFT JOIN MembrosDao m ON m.trabalhoid = t.idTrab WHERE t.idUsuarioResponsavel = :idUsuario OR m.usuarioid = :idUsuario")
     List<TrabalhosDao> obterTrabalhosPorUsuario(@Param("idUsuario") int idUsuario);
 
 }
