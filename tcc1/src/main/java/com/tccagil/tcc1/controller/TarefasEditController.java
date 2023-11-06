@@ -76,7 +76,6 @@ public class TarefasEditController {
             tarefa.setDescricao(form.getTarefaDescricaoEdit());
             tarefa.setPrioridade(form.getTarefaPrioridadeEdit());
             tarefa.setStatus(form.getStatusTarefasEdit());
-            tarefa.setIdUsuarioResponsavel_UP(usuarioIdAtividade);
 
             // Atualize a tarefa no banco de dados
             tarefasRepository.save(tarefa);

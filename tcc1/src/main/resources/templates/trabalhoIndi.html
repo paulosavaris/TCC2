@@ -49,7 +49,12 @@
 <body>
     <div th:insert="~{MenuEsq.html}"></div>
     <div style="margin-left: 20%;">
-        <h2 th:text="${trabalhoIndi.titulo}"></h2>
+        <div class="header_trab">
+            <div>
+                <h2 class="h2_trabalhos" th:text="${trabalhoIndi.titulo}"></h2>
+            </div>
+        </div>
+
         <p th:text="${trabalhoIndi.descricao}"></p>
         <a th:href="@{/trabalhoIndi/{idtrab}/tarefasCad(idtrab=${idtrab})}">Tarefas Cadastro</a>
 

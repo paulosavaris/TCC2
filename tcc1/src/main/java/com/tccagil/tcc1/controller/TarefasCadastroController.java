@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
+import com.tccagil.tcc1.domain.membros.MembrosDao;
+import com.tccagil.tcc1.domain.membros.MembrosService;
 import com.tccagil.tcc1.domain.tarefas.TarefasDao;
 import com.tccagil.tcc1.domain.tarefas.TarefasRecord;
 import com.tccagil.tcc1.domain.tarefas.TarefasRepository;
@@ -28,19 +30,25 @@ public class TarefasCadastroController {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
+    @Autowired
+    private MembrosService membrosService;
+
     @GetMapping("/trabalhoIndi/{idtrab}/tarefasCad")
     public String novaTarefa(@PathVariable Long idtrab, HttpSession session, Model model) {
         if (autenticacaoService.isUsuarioLogado(session)) {
             autenticacaoService.adicionarInformacoesComuns(model, session);
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
-             model.addAttribute("idUsuario", idUsuario);
 
+            MembrosDao membrosInd = membrosService.obterMembroIDporTrabalho(idtrab, idUsuario);
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
+
+            model.addAttribute("idUsuario", idUsuario);
             model.addAttribute("idtrab", idtrab);
 
             // Verifica se o trabalho existe e se o usuário logado é o proprietário do
             // trabalho
-            if (trabalhoIndi != null && trabalhoIndi.getIdUsuario() == idUsuario) {
+            if (trabalhoIndi != null && (trabalhoIndi.getIdUsuario() == idUsuario
+            || (membrosInd != null && membrosInd.getUsuarioId() == idUsuario))) {
                 model.addAttribute("trabalhoIndi", trabalhoIndi);
                 return "tarefasCad"; // Página para criar uma nova tarefa
             } else {

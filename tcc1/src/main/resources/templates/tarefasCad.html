@@ -11,21 +11,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv="content-language" content="pt-br" />
     <meta name="robots" content="index, follow" />
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/cadTarefas.css">
 </head>
 
-<body >
+<body style="display: flex; flex-direction: column; background: #AFAFAF;">
 
+    <div th:insert="~{MenuEsq.html}"></div>
+    <div style="margin-left: 20%;">
 
-
-
+        <div class="header_trab">
+            <div>
+                <h2 class="h2_trabalhos"> Nova Tarefa </h2>
+            </div>
+        </div>
         <div class="container">
             <div class="cadastro-form">
                 <h2>Nova Tarefa</h2>
-                <form method="post">
+                <form class="formulario" method="post">
                     <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
                     <input type="hidden" id="idUsuarioResponsavel" name="idUsuarioResponsavel" th:value="${idUsuario}">
-                    <input type="hidden" id="idUsuarioResponsavel_UP" name="idUsuarioResponsavel_UP" th:value="${idUsuario}">
+                    <input type="hidden" id="idUsuarioResponsavel_UP" name="idUsuarioResponsavel_UP"
+                        th:value="${idUsuario}">
                     <div class="form-group">
                         <label for="tituloTarefas">Tarefa</label>
                         <input type="text" id="tituloTarefas" name="tituloTarefas" required>
@@ -67,7 +73,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </div>
-
+    </div>
+    </div>
 </body>
 
 </html>
