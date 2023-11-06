@@ -57,7 +57,7 @@ public class loginController {
     }
 
     @PostMapping(params = "formAction=cadastra")
-    public String cadastraUser(UsuarioRecord dados) {
+    public String cadastraUser(UsuarioRecord dados, HttpSession session) {
 
             // Verificar se o email já está cadastrado
     if (repository.existsByEmail(dados.CadastroEmail())) {
@@ -77,6 +77,8 @@ public class loginController {
         // userCadaTeste.add(userCadastro);
         repository.save(userCadastro);
         System.out.println(repository.findAll());
+
+        session.setAttribute("cadastroSucesso", "Usuário cadastrado com sucesso!");
 
         return "login";
     }

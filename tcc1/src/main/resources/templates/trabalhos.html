@@ -50,6 +50,10 @@
                         <label for="prazo_entrega_trabalho">Prazo de Entrega</label>
                         <input class="input_field" type="date" id="prazo_entrega_trabalho" name="prazo_entregaTrabalho">
                     </div>
+
+                    <div th:if="${error}" class="error-message">
+                        <p th:text="${error}" style="color: red; font-size: 12px;"></p>
+                    </div>
                     <div class="butao" style="margin: 5px;">
                         <button class="butao" type="submit" value="Criar">Criar</button>
                     </div>
@@ -57,8 +61,8 @@
 
             </div>
         </div>
-
     </div>
+
 </body>
 
 </html>

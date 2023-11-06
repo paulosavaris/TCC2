@@ -11,6 +11,7 @@ import com.tccagil.tcc1.domain.trabalhos.TrabalhosRecord;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosRepository;
 import jakarta.servlet.http.HttpSession;
 
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class TrabalhosController {
     @Autowired
     private TrabalhosRepository trabalhosRepository; // Injete o repositório de New_Job_dados
 
-        @Autowired
+    @Autowired
     private AutenticacaoService autenticacaoService;
 
     @GetMapping("/trabalhos")
@@ -48,7 +49,21 @@ public class TrabalhosController {
             int idusuario_responsavel = (int) session.getAttribute("idUsuarioLogado");
             model.addAttribute("idUsuario", idusuario_responsavel);
 
-            System.out.println(idusuario_responsavel);
+            // Validacao de Datas
+            LocalDate data_iniTrabalho = dados.getData_iniTrabalho();
+            LocalDate prazo_entregaTrabalho = dados.getPrazo_entregaTrabalho();
+            LocalDate dataAtual = LocalDate.now();
+
+            if (data_iniTrabalho.isBefore(dataAtual)) {
+                model.addAttribute("error", "A data de início não pode ser anterior à data atual.");
+                return "trabalhos"; // Substitua pelo nome da sua página de formulário
+            }
+    
+            if (prazo_entregaTrabalho.isBefore(data_iniTrabalho)) {
+                model.addAttribute("error", "O prazo de entrega deve ser posterior à data de início.");
+                return "trabalhos"; // Substitua pelo nome da sua página de formulário
+            }
+
             TrabalhosRecord newJobRecord = new TrabalhosRecord(idusuario_responsavel, dados.getTituloTrabalho(),
                     dados.getDescricaoTrabalho(), dados.getData_iniTrabalho(), dados.getPrazo_entregaTrabalho());
 

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tccagil.tcc1.Service.AutenticacaoService;
 import com.tccagil.tcc1.domain.login.UsuarioDao;
 import com.tccagil.tcc1.domain.login.UsuarioRepository;
-import com.tccagil.tcc1.domain.membros.MembrosDTO;
 import com.tccagil.tcc1.domain.membros.MembrosDao;
 import com.tccagil.tcc1.domain.membros.MembrosRepository;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
