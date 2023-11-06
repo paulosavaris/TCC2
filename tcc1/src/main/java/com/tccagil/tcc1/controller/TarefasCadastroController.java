@@ -33,6 +33,7 @@ public class TarefasCadastroController {
         if (autenticacaoService.isUsuarioLogado(session)) {
             autenticacaoService.adicionarInformacoesComuns(model, session);
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+             model.addAttribute("idUsuario", idUsuario);
 
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
             model.addAttribute("idtrab", idtrab);

@@ -72,6 +72,8 @@ public class TarefasDao {
         this.prioridade = dados.prioridadeTarefas();
         this.status = dados.statusTarefas();
         this.trabalhoid = dados.trabalhoIdTarefas();
+        this.idUsuarioResponsavel = dados.idUsuarioResponsavel();
+        this.idUsuarioResponsavel_UP = dados.idUsuarioResponsavel_UP();
     }
 
     public boolean isEqual(TarefasDTO form) {//para comparar se os campos da entidade são iguais aos campos do objeto TarefasDTO
