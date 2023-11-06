@@ -33,6 +33,12 @@ public class TarefasDao {
     @Column(name = "trabalhoid")
     private Long trabalhoid;
 
+    @Column(name = "idusuarioresponsavel")
+    private int idUsuarioResponsavel;
+
+    @Column(name = "idusuarioresponsavelUp")
+    private int idUsuarioResponsavel_UP;
+
     
     public int getIdTarefas() {
         return idTarefas;
@@ -89,6 +95,22 @@ public class TarefasDao {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getIdUsuarioResponsavel() {
+        return idUsuarioResponsavel;
+    }
+
+    public void setIdUsuarioResponsavel(int idUsuarioResponsavel) {
+        this.idUsuarioResponsavel = idUsuarioResponsavel;
+    }
+
+    public int getIdUsuarioResponsavel_UP() {
+        return idUsuarioResponsavel_UP;
+    }
+
+    public void setIdUsuarioResponsavel_UP(int idUsuarioResponsavel_UP) {
+        this.idUsuarioResponsavel_UP = idUsuarioResponsavel_UP;
     }
 
 

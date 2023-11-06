@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
@@ -30,6 +32,15 @@ public class perfilController {
             return "redirect:/login";
         }
     }
+    
+@GetMapping("/logout")
+public String logout(HttpServletRequest request, HttpServletResponse response) {
+    // Finaliza a sessão atual
+    request.getSession().invalidate();
+
+    // Redireciona para a página de login ou qualquer outra página
+    return "redirect:/login";
+}
 
     //     // Verifica se o usuário está logado
     //     if (session.getAttribute("usuarioLogado") != null) {

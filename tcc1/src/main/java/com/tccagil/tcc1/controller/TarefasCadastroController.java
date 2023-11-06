@@ -54,7 +54,8 @@ public class TarefasCadastroController {
     public String salvarNovaTarefa(@PathVariable Long idtrab, TarefasRecord dados) {
         // Lógica para salvar a nova tarefa no banco de dados
         TarefasRecord tarefas = new TarefasRecord(idtrab, dados.tituloTarefas(),
-                dados.descricaoTarefas(), dados.prioridadeTarefas(), dados.statusTarefas());
+                dados.descricaoTarefas(), dados.prioridadeTarefas(), dados.statusTarefas(),
+                dados.idUsuarioResponsavel(), dados.idUsuarioResponsavel_UP());
 
         var tarefasCad = new TarefasDao(tarefas);
         // userCadaTeste.add(userCadastro);

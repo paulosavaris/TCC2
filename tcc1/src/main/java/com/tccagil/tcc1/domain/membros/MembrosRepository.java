@@ -7,10 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.tccagil.tcc1.domain.tarefas.TarefasDao;
-
-
-
 
 @Repository
 public interface MembrosRepository extends JpaRepository<MembrosDao, Long> {

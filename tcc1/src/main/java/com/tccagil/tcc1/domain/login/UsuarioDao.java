@@ -31,6 +31,8 @@ public class UsuarioDao {
     }
 
     private String nome;
+    
+    @Column(name = "email", unique = true)
     private String email;
     private String senha;
     // private String confirmaSenha;

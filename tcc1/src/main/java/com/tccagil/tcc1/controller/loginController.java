@@ -58,6 +58,12 @@ public class loginController {
 
     @PostMapping(params = "formAction=cadastra")
     public String cadastraUser(UsuarioRecord dados) {
+
+            // Verificar se o email já está cadastrado
+    if (repository.existsByEmail(dados.CadastroEmail())) {
+        // Email já cadastrado, retorne uma mensagem de erro
+        return "redirect:/login?errorC=Email já cadastrado";
+    }
         // Verificar se a senha e a confirmação de senha são iguais
         if (!dados.CadastroPassword().equals(dados.CadastroConfirmPassword())) {
             // Senha e confirmação de senha não correspondem, você pode retornar uma

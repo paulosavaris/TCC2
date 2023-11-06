@@ -18,39 +18,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </head>
 
 <body>
-    <div class="container">
-        <div class="cadastro-form">
-            <h1>Adicionar Membros ao Trabalho</h1>
 
-            <!-- Formulário para adicionar membros -->
-            <form method="post" th:action="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
-                <label for="email">Email do Membro:</label>
-                <input type="text" id="email" name="email" />
-                <button type="submit">Adicionar Membro</button>
-            </form>
+    <div th:insert="~{MenuEsq.html}"></div>
 
-            <!-- Lista de membros já adicionados -->
-            <h2>Membros Adicionados:</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Opcoes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="result : ${membros}">
-                        <td th:text="${result[1].nome}"></td>
-                        <td th:text="${result[0]}"></td>
-                        <td><button type="button" class="remove-button" th:attr="data-member-id=${result[1].idMembros}, data-work-id=${idtrab}">Remover</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="form-group">
-                <a th:href="@{'/trabalhoIndi/' + ${idtrab}}">
-                <button type="button">Voltar para Trabalho</button>
-                </a>
+    <div style="margin-left: 20%;">
+
+        <div class="container">
+            <div class="cadastro-form">
+                <h1>Adicionar Membros ao Trabalho</h1>
+
+                <!-- Formulário para adicionar membros -->
+                <form method="post" th:action="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
+                    <label for="email">Email do Membro:</label>
+                    <input type="text" id="email" name="email" />
+                    <button type="submit">Adicionar Membro</button>
+                </form>
+
+                <!-- Lista de membros já adicionados -->
+                <h2>Membros Adicionados:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Opcoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="result : ${membros}">
+                            <td th:text="${result[1].nome}"></td>
+                            <td th:text="${result[0]}"></td>
+                            <td><button type="button" class="remove-button"
+                                    th:attr="data-member-id=${result[1].idMembros}, data-work-id=${idtrab}">Remover</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <a th:href="@{'/trabalhoIndi/' + ${idtrab}}">
+                        <button type="button">Voltar para Trabalho</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -76,32 +84,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         });
     });
 
-// Adicione um ouvinte de evento a todos os botões de remoção
-const removeButtons = document.querySelectorAll(".remove-button");
-removeButtons.forEach(button => {
-    button.addEventListener("click", function () {
-        const memberId = this.getAttribute("data-member-id");
-        const workId = this.getAttribute("data-work-id");
+    // Adicione um ouvinte de evento a todos os botões de remoção
+    const removeButtons = document.querySelectorAll(".remove-button");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const memberId = this.getAttribute("data-member-id");
+            const workId = this.getAttribute("data-work-id");
 
-        // Envie uma solicitação para o servidor para remover o membro
-        fetch(`/trabalhoIndi/${workId}/Membros/removeMember/${memberId}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-        .then(response => {
-            if (response.status === 200) {
-                alert("Membro Removido com sucesso.");
-                window.location.reload(); // Recarrega a página
-                // Atualize a lista de membros após a remoção
-                // Você pode recarregar a página ou remover o membro da lista com JavaScript
-            } else {
-                alert("Erro ao remover o membro.");
-            }
+            // Envie uma solicitação para o servidor para remover o membro
+            fetch(`/trabalhoIndi/${workId}/Membros/removeMember/${memberId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+                .then(response => {
+                    if (response.status === 200) {
+                        alert("Membro Removido com sucesso.");
+                        window.location.reload(); // Recarrega a página
+                        // Atualize a lista de membros após a remoção
+                        // Você pode recarregar a página ou remover o membro da lista com JavaScript
+                    } else {
+                        alert("Erro ao remover o membro.");
+                    }
+                });
         });
     });
-});
 
 </script>
 

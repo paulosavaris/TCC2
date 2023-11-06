@@ -46,48 +46,48 @@
     </style>
 </head>
 
-<body >
+<body>
     <div th:insert="~{MenuEsq.html}"></div>
     <div style="margin-left: 20%;">
-    <h2 th:text="${trabalhoIndi.titulo}"></h2>
-    <p th:text="${trabalhoIndi.descricao}"></p>
-    <a th:href="@{/trabalhoIndi/{idtrab}/tarefasCad(idtrab=${idtrab})}">Tarefas Cadastro</a>
+        <h2 th:text="${trabalhoIndi.titulo}"></h2>
+        <p th:text="${trabalhoIndi.descricao}"></p>
+        <a th:href="@{/trabalhoIndi/{idtrab}/tarefasCad(idtrab=${idtrab})}">Tarefas Cadastro</a>
 
-    <div style="margin-right: 14px;">
-        <a th:href="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
-            <button type="button" class="butao">Add Membro</button>
-        </a>
-    </div>
-    <div style="margin-right: 14px;">
-        <a href="/trabalhos">
-            <button type="button" class="butao">Trabalhos</button>
-        </a>
-    </div>
-    <h2>Tarefas</h2>
-    <table id="tabela-tarefas" class="tg">
-        <thead>
-            <tr>
-                <th class="tg-0lax">Tarefas</th>
-                <th class="tg-0lax">Status</th>
-                <th class="tg-0lax">Prioridade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="tarefa : ${tarefas}">
-                <!-- <td class="tg-0lax" th:text="${tarefa.titulo}"></td> -->
-                <td class="tg-0lax">
-                    <a th:href="@{'/tarefasEdit/' + ${tarefa.idTarefas}}">
-                        <span th:text="${tarefa.titulo}"></span>
-                    </a>
-                </td>
+        <div style="margin-right: 14px;">
+            <a th:href="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
+                <button type="button" class="butao">Add Membro</button>
+            </a>
+        </div>
+        <div style="margin-right: 14px;">
+            <a href="/trabalhos">
+                <button type="button" class="butao">Trabalhos</button>
+            </a>
+        </div>
+        <h2>Tarefas</h2>
+        <table id="tabela-tarefas" class="tg">
+            <thead>
+                <tr>
+                    <th class="tg-0lax">Tarefas</th>
+                    <th class="tg-0lax">Status</th>
+                    <th class="tg-0lax">Prioridade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tarefa : ${tarefas}">
+                    <!-- <td class="tg-0lax" th:text="${tarefa.titulo}"></td> -->
+                    <td class="tg-0lax">
+                        <a th:href="@{'/tarefasEdit/' + ${tarefa.idTarefas}}">
+                            <span th:text="${tarefa.titulo}"></span>
+                        </a>
+                    </td>
 
-                <td class="tg-0lax" th:text="${tarefa.status}"></td>
-                <td class="tg-0lax" th:text="${tarefa.prioridade}"></td>
-            </tr>
-            <!-- Adicione mais linhas conforme necessário -->
-        </tbody>
-    </table>
-</div>
+                    <td class="tg-0lax" th:text="${tarefa.status}"></td>
+                    <td class="tg-0lax" th:text="${tarefa.prioridade}"></td>
+                </tr>
+                <!-- Adicione mais linhas conforme necessário -->
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

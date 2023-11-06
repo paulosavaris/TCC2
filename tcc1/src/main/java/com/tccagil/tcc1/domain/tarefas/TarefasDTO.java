@@ -5,6 +5,7 @@ public class TarefasDTO {
     private String TarefaDescricaoEdit;
     private String TarefaPrioridadeEdit;
     private String statusTarefasEdit;
+
     public String getTarefaNomeEdit() {
         return TarefaNomeEdit;
     }
