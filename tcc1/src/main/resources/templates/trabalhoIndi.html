@@ -87,7 +87,40 @@
                 <!-- Adicione mais linhas conforme necessário -->
             </tbody>
         </table>
+        <div style="margin-right: 14px;">
+            <button type="button" class="remove-button" th:if="${isButtonVisible}" th:attr="data-work-id=${idtrab}">Remover</button>
+        </div>
     </div>
+
 </body>
+
+<script>
+    // Adicione um ouvinte de evento a todos os botões de remoção
+    const removeButtons = document.querySelectorAll(".remove-button");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            if (confirm("Tem certeza de que deseja excluir este trabalho?")) {
+                const workId = this.getAttribute("data-work-id");
+
+                // Envie uma solicitação para o servidor para remover o trabalho
+                fetch(`/trabalhoIndi/${workId}/removeTrabalho`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                    .then(response => {
+                        if (response.status === 200) {
+                            alert("Trabalho Removido com sucesso.");
+                            window.location.reload(); // Recarrega a página
+                        } else {
+                            alert("Erro ao remover o Trabalho.");
+                        }
+                    });
+            };
+        });    
+    });
+
+</script>
 
 </html>

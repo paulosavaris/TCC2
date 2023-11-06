@@ -12,4 +12,8 @@ public class TrabalhosService {
     public TrabalhosDao obterTrabalhoPorId(Long idtrab) {
         return trabalhosRepository.findById(idtrab).orElse(null);
     }
+
+    public void excluirTrabalho(Long idtrab) {
+        trabalhosRepository.deleteById(idtrab);
+    }
 }
