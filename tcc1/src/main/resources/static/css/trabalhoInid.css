@@ -2,21 +2,14 @@
 .container {
 	display: flex;
 	flex-wrap: wrap; 
-	/* width: 80%; */
-	/* border: 1px solid #ccc;
-	border-radius: 5px; */
 	overflow: hidden;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #a194f4;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 10px; 
     padding: 5px 10px 10px 10px;
 }
 
 .login-form, .cadastro-form {
 	flex: 1;
-	/* padding: 20px; */
 }
 
 /* Estilos específicos para telas menores (mude os valores de acordo com suas necessidades) */
@@ -44,7 +37,6 @@ castro-form {
 
 .form-group {
 	margin-bottom: 15px;
-    padding: 0px 10px;
 }
 
 /* .form-group label {
@@ -166,7 +158,6 @@ castro-form {
 .div_sub_titulo {
     padding: 20px 30px;
     border-block-end: 1px solid;
-    margin-block-end: 10px;
     /*texto*/
     color: #000;
     font-family: Arial;
@@ -224,6 +215,21 @@ castro-form {
     padding: 5px 5px;
 }
 
+.sub_container{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 5px 10px 10px 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+
+
+
+
 .td_atividades{
     border-block: 1px solid;
     /* padding-block: 5px;
@@ -244,7 +250,6 @@ table, th, td {
 
   table{
     border-inline: 1px solid;
-    margin-inline-start: 30px;
   }
 
 .table_membro, .th_membro, .td_membro {
@@ -253,3 +258,42 @@ table, th, td {
     width: -webkit-fill-available;
     padding: 5px;
   }
+
+
+  /*teste*/
+  .card{
+    background: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: all 1s;
+    width: 26em;
+    border-radius: 5px;
+    margin: 10px;
+    display: -webkit-inline-box;
+  }
+
+  .card_container{
+    padding: 2px 16px;
+    text-align: left;
+    width: -webkit-fill-available;
+
+  }
+
+  .card_header{
+    text-align: center;
+  }
+
+  .card_content {
+    text-align: left;
+    margin: 6px;
+    font-size: 14px;
+}
+
+span{
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none; 
+}

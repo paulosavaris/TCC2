@@ -1,5 +1,6 @@
 package com.tccagil.tcc1.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,9 @@ public class TrabIndiController {
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
             MembrosDao membrosInd = membrosService.obterMembroIDporTrabalho(idtrab, idUsuario);
+            List<String> statusList = Arrays.asList("A fazer", "Fazendo", "Aguardando Retorno", "Concluida");
 
+            model.addAttribute("statusList", statusList);
             model.addAttribute("trabalhoIndi", trabalhoIndi);
             model.addAttribute("membrosInd", membrosInd);
             model.addAttribute("idtrab", idtrab);
