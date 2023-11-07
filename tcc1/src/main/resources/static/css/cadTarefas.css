@@ -11,6 +11,7 @@
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 10px; 
+    padding: 5px 10px 10px 10px;
 }
 
 .login-form, .cadastro-form {
@@ -45,16 +46,26 @@ castro-form {
 	margin-bottom: 15px;
 }
 
-.form-group label {
-	/* /display: block; */
+/* .form-group label {
+	/display: block;
 	margin-bottom: 5px;
-}
+} */
 
 .form-group input {
-	width: 100%;
+	width: -webkit-fill-available;
+    height: 30px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 }
+
+/* Altere a cor e o estilo da borda ao focar em um elemento de entrada */
+.form-group input[type="text"]:focus {
+    border: 1px solid #2479d5; /* Cor da borda ao focar */
+    border-radius: 3px; /* Raio da borda */
+    outline: none; /* Remove a borda padrão de foco */
+    box-shadow: 0 0 5px 0 rgba(0, 123, 255, 0.7); /* Adicione um sombreamento personalizado ao focar */
+}
+
 
 .form-group button {
 	background-color: #007bff;
@@ -137,14 +148,106 @@ castro-form {
 } */
 
 .formulario {
-    display: grid;
-    align-items: center;
+    display: flex;
+    align-items: stretch;
     gap: 30px;
     justify-content: space-around;
     justify-items: end;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 .input_field {
     width: 500px;
     height: 30px;
 }
+
+.div_sub_titulo {
+    padding: 20px 30px;
+    border-block-end: 1px solid;
+    margin-block-end: 10px;
+    /*texto*/
+    color: #000;
+    font-family: Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+ .div_ratio, .div_sub_ratio{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+ }
+
+ .div_ratio{
+    border: 1px solid;
+    margin-inline: 60px;
+ }
+
+ .form-group input[type="radio" i]{
+    width:auto;
+    margin: 0px;
+    align-self: center;
+    
+ }
+ 
+ 
+.ul_atividades {
+    display: flex;
+    /* width: 80%;
+    height: 100%; */
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-shrink: 0;
+    list-style: none;
+    /* Remove os marcadores de lista */
+    /* gap: 10px; */
+    padding: unset;
+    margin-left: 10px;
+    border-inline: 1px solid;
+    border-block-start: 1px solid;
+} 
+
+.li_atividades{
+    padding-block: 5px;
+    width: -webkit-fill-available;
+    border-block: 1px solid;
+    padding: 5px 5px;
+}
+
+.td_atividades{
+    border-block: 1px solid;
+    /* padding-block: 5px;
+    width: -webkit-fill-available;
+    border-block: 1px solid;
+    padding: 5px 5px; */
+}
+
+table, th, td {
+    border-block: 1px solid black;
+    border-collapse: collapse;
+    width: -webkit-fill-available;
+    padding: 5px;
+  }
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+
+  table{
+    border-inline: 1px solid;
+  }
+
+.table_membro, .th_membro, .td_membro {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: -webkit-fill-available;
+    padding: 5px;
+  }

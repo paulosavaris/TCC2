@@ -22,45 +22,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <div th:insert="~{MenuEsq.html}"></div>
 
     <div style="margin-left: 20%;">
+
         <div class="header_trab">
+
             <div>
-                <h2 class="h2_trabalhos"> Novo Membro </h2>
+                <h2 class="h2_trabalhos" th:text="${trabalhoIndi.titulo}"> </h2>
             </div>
         </div>
         <div class="container">
             <div class="cadastro-form">
-                <h1>Adicionar Membros ao Trabalho</h1>
+                <div class="div_sub_titulo">Adicionar Membros ao Trabalho</div>
+
 
                 <!-- Formulário para adicionar membros -->
                 <form method="post" th:action="@{/trabalhoIndi/{idtrab}/Membros(idtrab=${idtrab})}">
+                    <div class="form-group">
                     <label for="email">Email do Membro:</label>
                     <input type="text" id="email" name="email" />
-                    <button type="submit">Adicionar Membro</button>
+                    </div>
+                    <div class="form-group">
+                    <button class="butao" type="submit">Adicionar Membro</button>
+                    </div>
                 </form>
 
                 <!-- Lista de membros já adicionados -->
-                <h2>Membros Adicionados:</h2>
-                <table>
+                <div class="form-group">
+                <h3>Membros Adicionados:</h3>
+                <table class="table_membro">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Opcoes</th>
+                            <th class="th_membro">Nome</th>
+                            <th class="th_membro">Email</th>
+                            <th class="th_membro" style="width: 60px;">Opcoes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="result : ${membros}">
-                            <td th:text="${result[1].nome}"></td>
-                            <td th:text="${result[0]}"></td>
-                            <td><button type="button" class="remove-button"
+                            <td class="td_membro" th:text="${result[1].nome}"></td>
+                            <td class="td_membro" th:text="${result[0]}"></td>
+                            <td class="td_membro" ><button type="button" class="remove-button"
                                     th:attr="data-member-id=${result[1].idMembros}, data-work-id=${idtrab}">Remover</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
                 <div class="form-group">
                     <a th:href="@{'/trabalhoIndi/' + ${idtrab}}">
-                        <button type="button">Voltar para Trabalho</button>
+                        <button class="butao" type="button">Voltar para Trabalho</button>
                     </a>
                 </div>
             </div>
@@ -69,7 +78,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </body>
 
 <script>
-    $(function () {
+    $(document).ready(function () {
         $("#email").autocomplete({
             source: function (request, response) {
                 // Faça uma solicitação AJAX para buscar e-mails correspondentes no banco de dados

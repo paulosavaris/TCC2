@@ -56,7 +56,7 @@ public class MembrosController {
 
             List<Object[]> membros = membrosRepository.obterMembroPorTrabalho(idtrab);
 
-            
+            model.addAttribute("trabalhoIndi", trabalhoIndi);
             model.addAttribute("idtrab", idtrab);
             model.addAttribute("membros", membros);
 

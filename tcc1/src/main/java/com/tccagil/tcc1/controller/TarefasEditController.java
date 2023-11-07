@@ -55,6 +55,7 @@ public class TarefasEditController {
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(tarefa.getTrabalhoid());
             MembrosDao membrosInd = membrosService.obterMembroIDporTrabalhoLong(trabalhoIndi.getidTrab(), idUsuario);
             model.addAttribute("tarefa", tarefa);
+            model.addAttribute("trabalhoIndi", trabalhoIndi);
 
             model.addAttribute("idtarefas", idtarefas);
             if (trabalhoIndi != null && (trabalhoIndi.getIdUsuario() == idUsuario

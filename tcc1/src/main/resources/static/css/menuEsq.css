@@ -57,31 +57,12 @@ header h1 {
     margin-bottom: 20px;
 }
 
-ul {
-    display: flex;
-    /* width: 80%;*/
-    /*height: 100%;*/
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    /*padding: 5%;
-    padding-bottom: 10%;*/
-    flex-shrink: 0;
-    margin-left: 15%;
-    margin-top: -3%;
-    list-style: none;
-    /* Remove os marcadores de lista */
-    padding-left: unset;
-    gap: 30px;
-}
-
-li {
+/* li {
     width: 98%;
     height: 8%;
     flex-shrink: 0;
     margin-top: 5%;
-}
+} */
 
 a {
     color: #FFF;

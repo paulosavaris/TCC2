@@ -21,12 +21,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <div class="header_trab">
             <div>
-                <h2 class="h2_trabalhos"> Edicao de Tarefa </h2>
+                <h2 class="h2_trabalhos" th:text="${trabalhoIndi.titulo}"> </h2>
             </div>
         </div>
+
         <div class="container">
             <div class="cadastro-form">
-                <h2 th:text="${tarefa.titulo}"></h2>
+                <div class="div_sub_titulo" th:text="${tarefa.titulo}">  </div>
+                
+
+
                 <form th:action="@{'/tarefasEdit/' + ${idtarefas}}" method="post">
                     <!-- metodo para enviar/cadastrar requisicao formAction para distinguir os Post nas classe-->
                     <div class="form-group">
@@ -41,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             th:value="${tarefa.descricao}">
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="TarefaPrioridadeEdit">Prioridade:</label>
                         <select id="TarefaPrioridadeEdit" name="TarefaPrioridadeEdit">
                             <option value="baixa" th:selected="${tarefa.prioridade == 'baixa'}">Baixa</option>
@@ -49,9 +53,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <option value="alta" th:selected="${tarefa.prioridade == 'alta'}">Alta</option>
                             <option value="urgente" th:selected="${tarefa.prioridade == 'urgente'}">Urgente</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
+                        <label>Prioridade:</label><br>
+                        <div class="div_ratio">
+                            <div class="div_sub_ratio">
+                                <label for="baixa">Baixa  :</label><br>
+                                <input type="radio" id="baixa" name="TarefaPrioridadeEdit" value="baixa" th:checked="${tarefa.prioridade == 'baixa'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="media">Média  :</label><br>
+                                <input type="radio" id="media" name="TarefaPrioridadeEdit" value="media" th:checked="${tarefa.prioridade == 'media'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="alta">Alta :</label><br>
+                                <input type="radio" id="alta" name="TarefaPrioridadeEdit" value="alta" th:checked="${tarefa.prioridade == 'alta'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="urgente">Urgente  :</label>
+                                <input type="radio" id="urgente" name="TarefaPrioridadeEdit" value="urgente" th:checked="${tarefa.prioridade == 'urgente'}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
                         <label for="statusTarefasEdit">Status</label>
                         <select type="text" id="statusTarefasEdit" name="statusTarefasEdit" required>
                             <option value="A fazer" th:selected="${tarefa.status == 'A fazer'}">A fazer</option>
@@ -60,25 +86,57 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 Aguardando Retorno</option>
                             <option value="Concluida" th:selected="${tarefa.status == 'Concluida'}">Concluida</option>
                         </select>
+                    </div> -->
+                    <div class="form-group">
+                        <label>Status:</label><br>
+                        <div class="div_ratio">
+                            <div class="div_sub_ratio">
+                                <label for="A fazer">A fazer  :</label><br>
+                                <input type="radio" id="A fazer" name="statusTarefasEdit" value="A fazer" th:checked="${tarefa.status == 'A fazer'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="Fazendo">Fazendo  :</label><br>
+                                <input type="radio" id="Fazendo" name="statusTarefasEdit" value="Fazendo" th:checked="${tarefa.status == 'Fazendo'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="Aguardando Retorno">Aguardando Retorno :</label><br>
+                                <input type="radio" id="Aguardando Retorno" name="statusTarefasEdit" value="Aguardando Retorno" th:checked="${tarefa.status == 'Aguardando Retorno'}">
+                            </div>
+                            <div class="div_sub_ratio">
+                                <label for="Concluida">Concluida  :</label>
+                                <input type="radio" id="Concluida" name="statusTarefasEdit" value="Concluida" th:checked="${tarefa.status == 'Concluida'}">
+                            </div>
+                        </div>
                     </div>
-
                     <div class="form-group">
                         <label for="descricaoAtividade">Atividades</label>
                         <input type="text" id="descricaoAtividade" name="descricaoAtividade">
                     </div>
-                    <ul>
-                        <th:block th:each="result : ${atividades}">
-                            <li th:text="${result[0]} + ': ' + ${result[1].descricao}"></li>
-                        </th:block>
-                    </ul>
                     <div class="form-group">
-                        <button type="submit" value="Salvar">Salvar</button>
+                        <table>
+                            <tbody>
+                                <th:block th:each="result : ${atividades}">
+                                    <tr >
+                                        <td  th:text="${result[0]}  + ' : '"></td>
+                                        <td  th:text="${result[1].descricao}"></td> 
+                                    </tr>
+                                </th:block>
+                            </tbody>
+                        </table>
+                    <!-- <ul class="ul_atividades">
+                        <th:block th:each="result : ${atividades}">
+                            <li class="li_atividades" th:text="${result[0]} + ': ' + ${result[1].descricao}"></li>
+                        </th:block>
+                    </ul> -->
+                </div>
+                    <div class="form-group">
+                        <button class="butao" type="submit" value="Salvar">Salvar</button>
                     </div>
 
                 </form>
                 <div class="form-group">
                     <a th:href="@{'/trabalhoIndi/' + ${tarefa.trabalhoid}}">
-                        <button type="button">Voltar para Trabalho</button>
+                        <button class="butao" type="button">Voltar para Trabalho</button>
                     </a>
                 </div>
             </div>
