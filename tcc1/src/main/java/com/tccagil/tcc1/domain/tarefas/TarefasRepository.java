@@ -13,4 +13,6 @@ public interface TarefasRepository extends JpaRepository<TarefasDao, Long>{
     @Query("SELECT ta from TarefasDao ta where ta.trabalhoid = :idtrab")
     List<TarefasDao> obterTarefasPorTrabalho(@Param("idtrab") Long idtrab);
 
+    
+
 }

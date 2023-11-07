@@ -7,6 +7,17 @@ body {
     padding: 0;
 }
 
+.container_menu {
+	display: flex;
+	flex-wrap: wrap; 
+	/* width: 80%; */
+	/* border: 1px solid #ccc;
+	border-radius: 5px; */
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #a194f4;
+}
+
 header {
     background-color: #333;
     color: white;
@@ -23,11 +34,11 @@ header h1 {
 .sidebar {
     width: 20%;
     /*largura*/
-    height: 100%;
+    height: -webkit-fill-available;
     flex-shrink: 0;
     flex-wrap: wrap;
     /* Permite que os elementos se ajustem à largura da tela */
-    position: fixed;
+    position: absolute;
     z-index: 1;
     overflow-x: hidden;
     border: 1px solid rgba(0, 0, 0, 0.10);
@@ -102,13 +113,16 @@ a:hover {
     display: flex;
     flex-flow: column nowrap;
     gap: 30px;
-    width: 100%;
+    width:  -webkit-fill-available;
+    padding-left: 10px;
 }
 
 .accordion {
     position: relative;
-    display: grid;
-    grid-template-columns: 200px 50px;
+    /* display: grid; */
+    /* grid-template-columns: 200px 50px; */
+    display: flex;
+    flex-direction: column;
 }
 
 .accordion__header {
@@ -125,6 +139,7 @@ a:hover {
     transform: rotate(180deg);
     position: absolute;
     right: 20px;
+    top: 7px;
 }
 
 .accordion__header.active::after {

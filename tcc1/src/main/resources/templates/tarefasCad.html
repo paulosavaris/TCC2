@@ -21,7 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <div class="header_trab">
             <div>
-                <h2 class="h2_trabalhos"> Nova Tarefa </h2>
+                <h2 class="h2_trabalhos" th:text="${trabalhoIndi.titulo}"></h2>
             </div>
         </div>
         <div class="container">
@@ -63,12 +63,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" value="Salvar">Salvar</button>
+                        <button class="butao" type="submit" value="Salvar">Salvar</button>
                     </div>
                 </form>
                 <div class="form-group">
                     <a th:href="@{'/trabalhoIndi/' + ${idtrab}}">
-                        <button type="button">Voltar para Trabalho</button>
+                        <button type="button" class="butao">Voltar para Trabalho</button>
                     </a>
                 </div>
             </div>

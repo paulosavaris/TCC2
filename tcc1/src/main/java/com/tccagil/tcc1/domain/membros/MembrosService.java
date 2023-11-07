@@ -13,4 +13,10 @@ public class MembrosService {
         // return membrosRepository.findByTrabalhoIdAndUsuarioId(idtrab, idUsuario);
         return membrosRepository.findByUsuarioidAndTrabalhoid(idUsuario, idtrab);
     }
+
+    public MembrosDao obterMembroIDporTrabalhoLong(int idtrab, int idUsuario){
+        // return membrosRepository.findByTrabalhoIdAndUsuarioId(idtrab, idUsuario);
+        return membrosRepository.findByUsuarioidAndTrabalhoid(idUsuario, (long) idtrab);
+    }
+
 }

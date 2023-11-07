@@ -31,7 +31,7 @@ public class TarefasDao {
     private String status;
 
     @Column(name = "trabalhoid")
-    private Long trabalhoid;
+    public Long trabalhoid;
 
     @Column(name = "idusuarioresponsavel")
     private int idUsuarioResponsavel;

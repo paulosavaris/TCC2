@@ -20,6 +20,7 @@ import com.tccagil.tcc1.domain.login.UsuarioDao;
 import com.tccagil.tcc1.domain.login.UsuarioRepository;
 import com.tccagil.tcc1.domain.membros.MembrosDao;
 import com.tccagil.tcc1.domain.membros.MembrosRepository;
+import com.tccagil.tcc1.domain.membros.MembrosService;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosDao;
 import com.tccagil.tcc1.domain.trabalhos.TrabalhosService;
 
@@ -40,22 +41,29 @@ public class MembrosController {
     @Autowired
     private MembrosRepository membrosRepository;
 
+    @Autowired
+    private MembrosService membrosService;
+
     @GetMapping("/trabalhoIndi/{idtrab}/Membros")
     public String membros(@PathVariable Long idtrab, HttpSession session, Model model) {
         if (autenticacaoService.isUsuarioLogado(session)) {
             autenticacaoService.adicionarInformacoesComuns(model, session);
 
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
-
             TrabalhosDao trabalhoIndi = trabalhosIndService.obterTrabalhoPorId(idtrab);
-            model.addAttribute("idtrab", idtrab);
+            MembrosDao membrosInd = membrosService.obterMembroIDporTrabalho(idtrab, idUsuario);
+
 
             List<Object[]> membros = membrosRepository.obterMembroPorTrabalho(idtrab);
+
+            
+            model.addAttribute("idtrab", idtrab);
             model.addAttribute("membros", membros);
 
             // Verifica se o trabalho existe e se o usuário logado é o proprietário do
             // trabalho
-            if (trabalhoIndi != null && trabalhoIndi.getIdUsuario() == idUsuario) {
+            if (trabalhoIndi != null && (trabalhoIndi.getIdUsuario() == idUsuario
+            || (membrosInd != null && membrosInd.getUsuarioId() == idUsuario))) {
                 model.addAttribute("trabalhoIndi", trabalhoIndi);
 
                 return "Membros"; // Página para criar uma nova tarefa
@@ -77,9 +85,11 @@ public class MembrosController {
 
         if (usuario != null) {
             TrabalhosDao trabalho = trabalhosIndService.obterTrabalhoPorId(idtrab);
+            MembrosDao membrosInd = membrosService.obterMembroIDporTrabalho(idtrab, idUsuarioLogado);
             model.addAttribute("idtrab", idtrab);
             // Verifique se o usuário logado é o proprietário do trabalho
-            if (trabalho != null && trabalho.getIdUsuario() == idUsuarioLogado) {
+            if (trabalho != null && (trabalho.getIdUsuario() == idUsuarioLogado
+            || (membrosInd != null && membrosInd.getUsuarioId() == idUsuarioLogado)))  {
                 // Crie e associe o membro ao trabalho e ao usuário
                 MembrosDao membro = new MembrosDao();
                 membro.setNome(usuario.getNome());

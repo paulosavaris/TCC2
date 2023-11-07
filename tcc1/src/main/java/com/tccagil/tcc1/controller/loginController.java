@@ -40,17 +40,13 @@ public class loginController {
         UsuarioDao usuario = repository.findByEmailAndSenha(loginEmail, loginPassword);
 
         if (usuario != null) {
-            // Login bem-sucedido, armazene informações do usuário na sessão (ou onde
-            // preferir)
+            // Login bem-sucedido, armazene informações do usuário na sessão
             session.setAttribute("usuarioLogado", usuario);
             session.setAttribute("idUsuarioLogado", usuario.getIdUsuario());
 
             // Redirecione para a página após o login bem-sucedido
-            return "redirect:/trabalhos"; // Substitua com o caminho correto da sua página
+            return "redirect:/perfil";
         } else {
-            // Login falhou, você pode retornar uma mensagem de erro
-            // ou fazer o tratamento adequado, como redirecionar de volta ao formulário com
-            // uma mensagem de erro.
             return "redirect:/login?errorL=Email ou senha incorretos";
         }
 
@@ -59,25 +55,20 @@ public class loginController {
     @PostMapping(params = "formAction=cadastra")
     public String cadastraUser(UsuarioRecord dados, HttpSession session) {
 
-            // Verificar se o email já está cadastrado
+    // Verificar se o email já está cadastrado
     if (repository.existsByEmail(dados.CadastroEmail())) {
-        // Email já cadastrado, retorne uma mensagem de erro
         return "redirect:/login?errorC=Email já cadastrado";
     }
         // Verificar se a senha e a confirmação de senha são iguais
         if (!dados.CadastroPassword().equals(dados.CadastroConfirmPassword())) {
-            // Senha e confirmação de senha não correspondem, você pode retornar uma
-            // mensagem de erro
-            // ou fazer o tratamento adequado, como redirecionar de volta ao formulário com
-            // uma mensagem de erro.
             return "redirect:/login?errorC=Senhas nao correspondem";
         }
 
+         // Criar um novo objeto UsuarioDao com base nos dados recebidos
         var userCadastro = new UsuarioDao(dados);
-        // userCadaTeste.add(userCadastro);
+        // Salvar o novo usuário no repositório (banco de dados)
         repository.save(userCadastro);
-        System.out.println(repository.findAll());
-
+        // Definir um atributo de sessão para indicar que o cadastro foi bem-sucedido
         session.setAttribute("cadastroSucesso", "Usuário cadastrado com sucesso!");
 
         return "login";
