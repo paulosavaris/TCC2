@@ -1,0 +1,69 @@
+.container {
+	display: flex;
+	flex-wrap: wrap; 
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #a194f4;
+    padding: 5px 10px 10px 10px;
+}
+
+.login-form, .cadastro-form {
+	flex: 1;
+}
+
+/* Estilos específicos para telas menores (mude os valores de acordo com suas necessidades) */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%; /* Ocupa 100% da largura da tela em telas menores */
+    }
+
+    .login-form,
+    .cadastro-form {
+        padding: 10px; /* Reduz o espaço de preenchimento nas colunas em telas menores */
+    }
+
+    .form-group input,
+    .form-group button {
+        width: 100%; /* Faz os campos de entrada e botões ocuparem 100% da largura */
+    }
+}
+
+
+castro-form {
+	background-color: #ffffff;
+}
+
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+/* .form-group label {
+	/display: block;
+	margin-bottom: 5px;
+} */
+
+.form-group input {
+	width: -webkit-fill-available;
+    height: 30px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+/* Altere a cor e o estilo da borda ao focar em um elemento de entrada */
+.form-group input[type="text"]:focus {
+    border: 1px solid #2479d5; /* Cor da borda ao focar */
+    border-radius: 3px; /* Raio da borda */
+    outline: none; /* Remove a borda padrão de foco */
+    box-shadow: 0 0 5px 0 rgba(0, 123, 255, 0.7); /* Adicione um sombreamento personalizado ao focar */
+}
+
+
+.form-group button {
+	background-color: #007bff;
+	color: #ffffff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 3px;
+	cursor: pointer;
+} 

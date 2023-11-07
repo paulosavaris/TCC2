@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <title>Tarefas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" type="text/css" href="/css/tarefas.css">
+</head>
+
+<body style="display: flex; flex-direction: column; background: #AFAFAF;">
+
+    <div th:insert="~{MenuEsq.html}"></div>
+    <div style="margin-left: 20%;">
+
+        <div class="form-group">
+            <h2>Tarefas</h2>
+            <table id="tabela-tarefas" class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-0lax">Tarefas</th>
+                        <th class="tg-0lax">Status</th>
+                        <th class="tg-0lax">Prioridade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="tarefa : ${tarefas}">
+                        <td class="tg-0lax" th:text="${tarefa.titulo}"></td> 
+                        <td class="tg-0lax">
+                            <a th:href="@{'/tarefasEdit/' + ${tarefa.idTarefas}}">
+                                <span th:text="${tarefa.titulo}"></span>
+                            </a>
+                        </td>
+
+                        <td class="tg-0lax" th:text="${tarefa.status}"></td>
+                        <td class="tg-0lax" th:text="${tarefa.prioridade}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
