@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br"
->
+<html lang="pt-br">
+
+</html>
+
 <head>
     <meta charset='utf-8'>
     <title>Perfil</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv="content-language" content="pt-br" />
-    <meta name="robots" content="index, follow"/>
+    <meta name="robots" content="index, follow" />
     <link rel="stylesheet" type="text/css" href="/css/perfil.css">
 </head>
+
 <body>
-           <!-- <h1>Bem-vindo, <span th:text="${nomeUsuario}"></span></h1>
+    <!-- <h1>Bem-vindo, <span th:text="${nomeUsuario}"></span></h1>
     <div th:insert="~{MenuEsq.html}"></div> -->
     <div th:insert="~{MenuEsq.html}"></div>
     <div class="grid-container">
@@ -19,23 +22,33 @@
             <div class="user-Name">
                 <h3 class="h3_teste"><span th:text="${nomeUsuario}"></span></h3>
             </div>
-            <div class="user-job">
-                <p class="p">Trabalhos</p>
-                <span th:each="result : ${quantidades}" th:text="${result[1]}"></span>
-            </div>
-            <div class="user-task">
-                <p class="p">Tarefas</p>
-                <span th:each="result : ${quantidades}" th:text="${result[0]}"></span>
+            <div class="form-group">
+                <table style="width:100%">
+                    <tr>
+                        <td>Trabalhos</td>
+                        <td th:each="result : ${quantidades}" th:text="${result[1]}">Tarefas</td>
+                    </tr>
+                    <tr>
+                        <td>Tarefas</td>
+                        <td th:each="result : ${quantidades}" th:text="${result[0]}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="quadro-direita">
-            <!-- Aqui você pode adicionar sua timeline vertical -->
-            <ul>
+            <ul class="timeline">
                 <li th:each="logItem : ${log}">
-                    <span th:text="${logItem[2]}"></span>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="flag" th:text="${logItem[1][2]}"></span>
+                            <span class="time-wrapper"><span class="time" th:text="${logItem[0]}"></span></span>
+                        </div>
+                    </div>
                 </li>
             </ul>
+
         </div>
     </div>
 </body>
+
 </html>

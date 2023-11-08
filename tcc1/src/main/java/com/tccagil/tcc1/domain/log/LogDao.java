@@ -1,6 +1,6 @@
 package com.tccagil.tcc1.domain.log;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +25,7 @@ private String tipoevento;
 private String descricaoevento;
 
     @Column(name = "datahoraevento")
-private LocalDate datahoraevento;
+private LocalDateTime datahoraevento;
 
     @Column(name = "idusuariolog")
 private int idusuariolog;
@@ -68,11 +68,11 @@ private int idtarefa;
         this.descricaoevento = descricaoevento;
     }
 
-    public LocalDate getDatahoraevento() {
+    public LocalDateTime getDatahoraevento() {
         return datahoraevento;
     }
 
-    public void setDatahoraevento(LocalDate datahoraevento) {
+    public void setDatahoraevento(LocalDateTime datahoraevento) {
         this.datahoraevento = datahoraevento;
     }
 
