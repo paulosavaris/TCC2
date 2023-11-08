@@ -14,17 +14,27 @@
     <div th:insert="~{MenuEsq.html}"></div> -->
     <div th:insert="~{MenuEsq.html}"></div>
     <div class="grid-container">
-        
         <div class="quadro-esquerda">
-                <div class="circulo"></div>
-                <div class="user-Name"> <h3 class="h3_teste"><span th:text="${nomeUsuario}"></span></h3></div>
-                <div class="user-job"> <p class="p">Trabalhos</p></div>
-                <div class="user-task"> <p class="p">Tarefas</p> </div>
+            <div class="circulo"></div>
+            <div class="user-Name">
+                <h3 class="h3_teste"><span th:text="${nomeUsuario}"></span></h3>
+            </div>
+            <div class="user-job">
+                <p class="p">Trabalhos</p>
+                <span th:each="result : ${quantidades}" th:text="${result[1]}"></span>
+            </div>
+            <div class="user-task">
+                <p class="p">Tarefas</p>
+                <span th:each="result : ${quantidades}" th:text="${result[0]}"></span>
+            </div>
         </div>
-        
         <div class="quadro-direita">
             <!-- Aqui você pode adicionar sua timeline vertical -->
-            <p>Alguma data</p>
+            <ul>
+                <li th:each="logItem : ${log}">
+                    <span th:text="${logItem[2]}"></span>
+                </li>
+            </ul>
         </div>
     </div>
 </body>

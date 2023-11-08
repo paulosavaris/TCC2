@@ -5,6 +5,10 @@
 package com.tccagil.tcc1.controller;
 
 import com.tccagil.tcc1.Service.AutenticacaoService;
+import com.tccagil.tcc1.domain.log.LogRepository;
+import com.tccagil.tcc1.domain.tarefas.TarefasRepository;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,46 +27,63 @@ public class perfilController {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
+    @Autowired
+    private TarefasRepository tarefasRepository;
+
+    @Autowired
+    private LogRepository logRepository;
+
     @GetMapping("/perfil")
     public String perfil(HttpSession session, Model model) {
         if (autenticacaoService.isUsuarioLogado(session)) {
             autenticacaoService.adicionarInformacoesComuns(model, session);
+
+            int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+
+            List<Object[]> quantidades = tarefasRepository.obterQuantidadeTarefaseTrabPorUsuario(idUsuario);
+            model.addAttribute("quantidades", quantidades);
+
+            List<Object[]> log = logRepository.findLogsByUserIdOrMemberUserId(idUsuario);
+            model.addAttribute("log", log);
+
             return "perfil";
         } else {
             return "redirect:/login";
         }
     }
-    
-@GetMapping("/logout")
-public String logout(HttpServletRequest request, HttpServletResponse response) {
-    // Finaliza a sessão atual
-    request.getSession().invalidate();
 
-    // Redireciona para a página de login ou qualquer outra página
-    return "redirect:/login";
-}
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        // Finaliza a sessão atual
+        request.getSession().invalidate();
 
-    //     // Verifica se o usuário está logado
-    //     if (session.getAttribute("usuarioLogado") != null) {
-    //         // Recupera o objeto Login_Cadastro da sessão
-    //         UsuarioDao usuarioLogado = (UsuarioDao) session.getAttribute("usuarioLogado");
+        // Redireciona para a página de login ou qualquer outra página
+        return "redirect:/login";
+    }
 
-    //         // Obtém o nome do usuário e coloca no modelo para ser exibido na página
-    //         String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo método correto para obter o nome
-    //                                                       // do usuário
-    //         model.addAttribute("nomeUsuario", nomeUsuario);
+    // // Verifica se o usuário está logado
+    // if (session.getAttribute("usuarioLogado") != null) {
+    // // Recupera o objeto Login_Cadastro da sessão
+    // UsuarioDao usuarioLogado = (UsuarioDao)
+    // session.getAttribute("usuarioLogado");
 
-    //         int idUsuario = (int) session.getAttribute("idUsuarioLogado");
-    //         List<String> nomesTrabalhos = trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
-    //         model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+    // // Obtém o nome do usuário e coloca no modelo para ser exibido na página
+    // String nomeUsuario = usuarioLogado.getNome(); // Substitua "getNome()" pelo
+    // método correto para obter o nome
+    // // do usuário
+    // model.addAttribute("nomeUsuario", nomeUsuario);
 
-    //         // Redireciona para a página de perfil
-    //         return "perfil";
-    //     } else {
-    //         // Caso o usuário não esteja logado, você pode redirecionar para a página de
-    //         // login ou fazer outra ação
-    //         return "redirect:/login";
-    //     }
+    // int idUsuario = (int) session.getAttribute("idUsuarioLogado");
+    // List<String> nomesTrabalhos =
+    // trabalhosRepository.obterNomesTrabalhosPorUsuario(idUsuario);
+    // model.addAttribute("nomesTrabalhos", nomesTrabalhos);
+
+    // // Redireciona para a página de perfil
+    // return "perfil";
+    // } else {
+    // // Caso o usuário não esteja logado, você pode redirecionar para a página de
+    // // login ou fazer outra ação
+    // return "redirect:/login";
+    // }
     // }
 }
-
