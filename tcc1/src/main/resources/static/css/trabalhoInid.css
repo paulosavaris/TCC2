@@ -36,7 +36,10 @@ castro-form {
 
 
 .form-group {
-	margin-bottom: 15px;
+	display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex-direction: column;
 }
 
 /* .form-group label {
@@ -61,7 +64,7 @@ castro-form {
 
 
 .form-group button {
-	background-color: #007bff;
+	background-color: rgba(0,0,0,0.2);
 	color: #ffffff;
 	border: none;
 	padding: 10px 20px;
@@ -123,22 +126,6 @@ castro-form {
     margin-left: 20px;
 }
 
-/* .butao {
-    width: 130px;
-    height: 40px;
-    flex-shrink: 0;
-    border: 0.5px;
-    border-radius: 20px;
-    background: #D9D9D9;
-    color: #FFF;
-    font-family: Arial;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    align-self: baseline;
-    background: #568392;
-} */
 
 .formulario {
     display: flex;
@@ -186,7 +173,6 @@ castro-form {
     width:auto;
     margin: 0px;
     align-self: center;
-    
  }
  
  
@@ -265,21 +251,44 @@ table, th, td {
     background: #FFFFFF;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: all 1s;
-    width: 26em;
+    width: -webkit-fill-available;
     border-radius: 5px;
     margin: 10px;
     display: -webkit-inline-box;
+    display: flex;
+    /* padding-bottom: 10px; */
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid;
   }
 
-  .card_container{
-    padding: 2px 16px;
+  .cards-container{
+    /* padding: 2px 16px;
     text-align: left;
-    width: -webkit-fill-available;
+    width: -webkit-fill-available; */
+    /* padding: 2px 16px;
+    text-align: left;
+    width: -webkit-fill-available; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 0px; */
+    /* background-color: #a194f4; */
+    padding-right: 10px;
+    /* padding-top: 5px; */
+    /* margin-left: 20%; */
+    padding-bottom: 10px;
+  }
 
+
+  .card_container{
+    display: flex;
+    padding-bottom: 10px;
+    flex-direction: column;
   }
 
   .card_header{
     text-align: center;
+    padding-top: 5px;
   }
 
   .card_content {
@@ -296,4 +305,47 @@ span{
     font-weight: 400;
     line-height: normal;
     text-decoration: none; 
+}
+
+.baixa-prioridade {
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.media-prioridade {
+    background-color: #8fbc8f;
+    color: white;
+}
+
+.alta-prioridade {
+    background-color: rgba(244, 244, 38, 0.585);
+    color: black;
+}
+
+.urgente-prioridade {
+    background-color: rgba(248, 60, 60, 0.437);
+    color: white;
+}
+
+a.alta-prioridade, .urgente-prioridade, .media-prioridade, .baixa-prioridade{
+    border-radius: 6px;
+    border: 1px solid;
+    font-size: small;
+    width: -webkit-fill-available;
+    display: flow;
+    padding: 2px 4px;
+    margin-bottom: 4px;
+}
+
+.a_addTarefa{
+    background-color: #4ea0f8;
+    color: #ffffff;
+    border: none;
+    padding: 4px 0px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 10px;
+    align-self: stretch;
 }
