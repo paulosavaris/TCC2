@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LogRepository extends JpaRepository<LogDao, Long> {
 
-    @Query(value = "SELECT to_char(l.datahoraevento, 'dd/MM/yyyy HH:mi'), l FROM tcc.log l " +
+    @Query(value = "SELECT to_char(l.datahoraevento, 'dd/MM/yyyy hh24:mi'), l FROM tcc.log l " +
             "LEFT JOIN tcc.trabalho t ON t.idtrab = l.idtrabalho " +
             "LEFT JOIN tcc.tarefas ta ON ta.idtarefas = l.idtarefa " +
             "LEFT JOIN tcc.membrostrab m ON m.trabalhoid = t.idtrab " +
