@@ -3,8 +3,8 @@
 	display: flex;
 	flex-wrap: wrap; 
 	overflow: hidden;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #a194f4;
+	/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #a194f4; */
     padding: 5px 10px 10px 10px;
 }
 

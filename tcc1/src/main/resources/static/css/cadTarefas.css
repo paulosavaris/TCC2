@@ -6,8 +6,8 @@
 	/* border: 1px solid #ccc;
 	border-radius: 5px; */
 	overflow: hidden;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #a194f4;
+	/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #a194f4; */
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 10px; 
@@ -130,23 +130,6 @@ castro-form {
     margin-block: 0px;
     margin-left: 20px;
 }
-
-/* .butao {
-    width: 130px;
-    height: 40px;
-    flex-shrink: 0;
-    border: 0.5px;
-    border-radius: 20px;
-    background: #D9D9D9;
-    color: #FFF;
-    font-family: Arial;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    align-self: baseline;
-    background: #568392;
-} */
 
 .formulario {
     display: flex;
