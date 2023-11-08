@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br"></html>
+<html lang="pt-br">
+
+</html>
 
 <head>
     <meta charset='utf-8'>
@@ -17,8 +19,9 @@
 
         <div class="header_trab">
             <div>
-                <h2 class="h2_trabalhos">Trabalhos </h2>
+                <h2 class="h2_trabalhos"> Trabalhos </h2>
             </div>
+
             <div class="legenda_tarefas">
                 <h4 class="legenda_h4"> Status das Tarefas </h4>
                 <div class="legenda_status">
@@ -47,45 +50,57 @@
                     </div>
                 </div>
             </div>
-            <div style="margin-right: 14px;">
+
+            <div class="form-group">
                 <a href="/trabalhos">
                     <button type="button" class="butao">Novo Trabalho</button>
                 </a>
             </div>
-
         </div>
 
 
 
+        <div class="container">
+            <div class="cadastro-form">
 
+                <div class="cards-container">
 
-        <div class="grid-container">
-            <div class="quadro-esquerda">
-                <div>
-                    <h2 class="h3_trabalhos"> Trabalho </h3>
+                    <th:block th:each="trabalho : ${trabalhosInfo}">
+                        <div class="card">
+                            <!-- <div class="card_header" th:text="${trabalho[1]}" th:href="@{'/trabalhoIndi/' + ${trabalho[0]}}"></div> -->
+                            <a class="a_addTarefa" th:href="@{'/trabalhoIndi/' + ${trabalho[0]}}">
+                                <div class="card_header" th:text="${trabalho[1]}"></div>
+                            </a> 
+                            <div class="card_container">
+                                <div class="card_content">
+
+                                    <div class="list-cards">
+                                        <div class="blocos">
+                                            <h4 class="h2_membros"> Membros </h2>
+                                                <p th:text="${trabalho[4]}"> s</p>
+                                                <table class="tabela_table">
+                                                    <tr>
+                                                        <td class="tabela_td" th:text="${trabalho[5]}">
+                                                        </td>
+                                                        <td class="tabela_td"> Autor </td>
+                                                    </tr>
+                                                </table>
+                                        </div>
+
+                                        <div class="blocos">
+                                            <h4 class="h2_tarefas">Tarefas</h2>
+                                                <p class="p" th:text="${trabalho[3]}"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
-                <div class="list-cards">
-                    <div class="blocos">
-                        <h4 class="h2_membros"> Membros </h2>
-                            <p> quantidade de membros</p>
-                            <table class="tabela_table">
-                                <tr>
-                                    <td class="tabela_td"> <span th:text="${nomeUsuario}"></span> </td>
-                                    <td class="tabela_td"> Autor </td>
-                                </tr>
-                            </table>
-                    </div>
 
-                    <div class="blocos">
-                        <h4 class="h2_tarefas">Tarefas</h2>
-                            <p class="p"> quantidade de Tarefas</p>
-                            <div class="circulo"></div>
-                    </div>
-
-                </div>
             </div>
         </div>
-
     </div>
 </body>
 
