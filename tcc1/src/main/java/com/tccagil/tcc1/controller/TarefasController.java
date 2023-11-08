@@ -23,16 +23,11 @@ import jakarta.servlet.http.HttpSession;
 public class TarefasController {
 
     @Autowired
-    private TrabalhosService trabalhosIndService;
-
-    @Autowired
     private AutenticacaoService autenticacaoService;
 
     @Autowired
     private TarefasRepository tarefasRepository;
 
-    @Autowired
-    private MembrosService membrosService;
 
     @GetMapping("/tarefas")
     public String tarefas(HttpSession session, Model model) {
@@ -42,7 +37,7 @@ public class TarefasController {
 
             int idUsuario = (int) session.getAttribute("idUsuarioLogado");
 
-            List<TarefasDao> tarefas = tarefasRepository.obterTarefasPorUsuario(idUsuario);
+            List<Object[]> tarefas = tarefasRepository.obterTarefasPorUsuario(idUsuario);
             model.addAttribute("tarefas", tarefas);
 
             return "tarefas";
